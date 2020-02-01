@@ -1,2 +1,2 @@
-# xon2js
+# xon-js
 XON to js translator
