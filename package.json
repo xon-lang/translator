@@ -23,7 +23,10 @@
     "license": "Apache-2.0",
     "scripts": {
         "test": "jest",
-        "prepublish": "tsc"
+        "preversion": "npm run test",
+        "version": "tsc",
+        "postversion": "git push && git push --tags",
+        "deploy": "rimraf dist && tsc && cp package.json dist && cp *.md dist && cd dist && npm publish"
     },
     "husky": {
         "hooks": {
@@ -40,6 +43,6 @@
         "typescript": "^3.7.5"
     },
     "dependencies": {
-        "@xon/ast": "file:../ast"
+        "@xon/ast": "^1.0.7"
     }
 }
