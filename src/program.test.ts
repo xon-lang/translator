@@ -1,4 +1,4 @@
-import { evalExpression, parseExpression } from '@xon/ast';
+import { evalExpression, parseExpression } from '@xon/ast/test-helper';
 
 test('check ast', () => {
     const code = '100 >> 4 |x: x^x + x |z: z^x && x^z | z + x';
