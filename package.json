@@ -2,7 +2,7 @@
     "name": "@xon/xon-js",
     "author": "Nizami",
     "version": "1.0.0",
-    "description": "xon to js translator",
+    "description": "XON to JS translator",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "bugs": {
