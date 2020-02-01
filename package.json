@@ -1,0 +1,48 @@
+{
+    "name": "@xon/xon-js",
+    "author": "Nizami",
+    "version": "1.0.0",
+    "description": "xon to js translator",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "bugs": {
+        "url": "https://github.com/xon-lang/xon-js/issues"
+    },
+    "homepage": "https://github.com/xon-lang/xon-js#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/xon-lang/xon-js.git"
+    },
+    "keywords": [
+        "xon",
+        "xon-js",
+        "compiler",
+        "translator",
+        "programming language"
+    ],
+    "license": "Apache-2.0",
+    "prepublish": "tsc",
+    "scripts": {
+        "test": "jest"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run test"
+        }
+    },
+    "devDependencies": {
+        "@types/jest": "^25.1.1",
+        "@types/lodash": "^4.14.149",
+        "@types/node": "^13.7.0",
+        "husky": "^4.2.1",
+        "jest": "^25.1.0",
+        "rimraf": "^3.0.1",
+        "ts-jest": "^25.1.0",
+        "typescript": "^3.7.5"
+    },
+    "dependencies": {
+        "@xon/ast": "file:../ast",
+        "lodash": "^4.17.15",
+        "tslib": "^1.10.0"
+    }
+}
