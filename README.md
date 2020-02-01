@@ -1,2 +1,3 @@
-# xon-js
-XON to js translator
+# XON to JS
+
+XON to JS translator
