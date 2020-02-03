@@ -1,0 +1,32 @@
+#{#!/usr/bin/env /usr/local/bin/node
+
+// <bitbar.title>Hubstaff Info</bitbar.title>
+// <bitbar.version>v1.0.0</bitbar.version>
+// <bitbar.author>Nizami</bitbar.author>
+// <bitbar.author.github>nizami-dev</bitbar.author.github>
+// <bitbar.desc>Show Hubstaff info</bitbar.desc>
+// <bitbar.dependencies>node.js</bitbar.dependencies>
+// <bitbar.image>https://i.imgur.com/0aNslKx.png</bitbar.image>
+/*jshint esversion: 6 */}
+
+
+// const si = require("systeminformation");
+si = require("systeminformation");
+
+renderPlugin();
+
+renderPlugin {
+    #{const battery = await si.battery();}
+    chargeIcon = "";
+    if battery.ischarging { chargeIcon = "⚡"; }
+    color = getChargeColor(battery.percent);
+    console.log(color + chargeIcon + battery.percent + "% | size=13");
+    console.log("---");
+    console.log("Refresh|refresh=true");
+}
+
+getChargeColor p:number {
+  if p > 40 {#{return "\u001b[32m";}} //green
+  if p > 20 {#{return "\u001b[33m";}} //yellow
+  if p > 0 {#{return "\u001b[31m";}} //red
+}

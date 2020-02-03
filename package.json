@@ -43,6 +43,6 @@
         "typescript": "^3.7.5"
     },
     "dependencies": {
-        "@xon/ast": "^1.0.8"
+        "@xon/ast": "file:../ast"
     }
 }
