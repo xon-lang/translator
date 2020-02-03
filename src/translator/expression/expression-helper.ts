@@ -1,14 +1,23 @@
-
+import {
+    AddSubExpressionTree,
+    ExpressionTree,
+    FunctionExpressionTree,
+    IdExpressionTree,
+    LiteralExpressionTree,
+    LogicalAndExpressionTree,
+    LogicalOrExpressionTree,
+    MemberExpressionTree,
+    RelationalExpressionTree,
+} from '@xon/ast';
 import { AddSubExpressionTranslator } from './add-sub-expression/add-sub-expression.translator';
 import { ExpressionTranslator } from './expression.translator';
 import { FunctionExpressionTranslator } from './function-expression/function-expression.translator';
 import { IdExpressionTranslator } from './id-expression/id-expression.translator';
 import { LiteralExpressionTranslator } from './literal-expression/literal-expression.translator';
+import { LogicalAndExpressionTranslator } from './logical-and-expression/logical-and-expression.translator';
+import { LogicalOrExpressionTranslator } from './logical-or-expression/logical-or-expression.translator';
 import { MemberExpressionTranslator } from './member-expression/member-expression.translator';
 import { RelationalExpressionTranslator } from './relational-expression/relational-expression.translator';
-import { ExpressionTree, IdExpressionTree, FunctionExpressionTree, LiteralExpressionTree, MemberExpressionTree, RelationalExpressionTree, AddSubExpressionTree } from '@xon/ast';
-
-
 
 export function getExpressionTranslator(tree: ExpressionTree): ExpressionTranslator {
     if (tree instanceof IdExpressionTree) return new IdExpressionTranslator(tree);
@@ -17,4 +26,7 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
     if (tree instanceof MemberExpressionTree) return new MemberExpressionTranslator(tree);
     if (tree instanceof RelationalExpressionTree) return new RelationalExpressionTranslator(tree);
     if (tree instanceof AddSubExpressionTree) return new AddSubExpressionTranslator(tree);
+    if (tree instanceof LogicalAndExpressionTree) return new LogicalAndExpressionTranslator(tree);
+    if (tree instanceof LogicalOrExpressionTree) return new LogicalOrExpressionTranslator(tree);
+    throw 'No Expression found for ' + tree.type;
 }
