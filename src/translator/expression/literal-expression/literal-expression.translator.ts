@@ -9,6 +9,11 @@ export class LiteralExpressionTranslator extends ExpressionTranslator {
 
     translate() {
         if (this.tree.literal instanceof StringLiteralTree) {
+            const lines = this.tree.literal.value.split('\n');
+            if (lines.length > 1) {
+                const s = lines.map(x => `'${x}\\n'`).join(` +\n`);
+                return `${s}`;
+            }
             return `'${this.tree.literal.value}'`;
         }
         return this.tree.literal.value;
