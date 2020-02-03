@@ -8,28 +8,28 @@
 // <bitbar.dependencies>node.js</bitbar.dependencies>
 // <bitbar.image>https://i.imgur.com/0aNslKx.png</bitbar.image>
 /*jshint esversion: 6 */
-si = require("systeminformation");
+si = require(systeminformation);
 renderPlugin();
 function renderPlugin() {
     let chargeIcon, color;
     const battery = await si.battery();
-    chargeIcon = "";
-    if (batteryischarging) {
-        chargeIcon = "⚡";
+    chargeIcon = '';
+    if (battery.ischarging) {
+        chargeIcon = '⚡';
     }
-    color = getChargeColor(batterypercent);
-    consolelog(color + chargeIcon + batterypercent + "% | size=13");
-    consolelog("---");
-    consolelog("Refresh|refresh=true");
+    color = getChargeColor(battery.percent);
+    console.log(color + chargeIcon + battery.percent + '% | size=13');
+    console.log('---');
+    console.log('Refresh|refresh=true');
 }
 function getChargeColor(p) {
     if (p > 40) {
-        return "\u001b[32m";
+        return '\u001b[32m';
     }
     if (p > 20) {
-        return "\u001b[33m";
+        return '\u001b[33m';
     }
     if (p > 0) {
-        return "\u001b[31m";
+        return '\u001b[31m';
     }
 }
