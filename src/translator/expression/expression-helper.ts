@@ -8,6 +8,7 @@ import {
     LogicalOrExpressionTree,
     MemberExpressionTree,
     RelationalExpressionTree,
+    StringFormatExpressionTree,
 } from '@xon/ast';
 import { AddSubExpressionTranslator } from './add-sub-expression/add-sub-expression.translator';
 import { ExpressionTranslator } from './expression.translator';
@@ -18,6 +19,7 @@ import { LogicalAndExpressionTranslator } from './logical-and-expression/logical
 import { LogicalOrExpressionTranslator } from './logical-or-expression/logical-or-expression.translator';
 import { MemberExpressionTranslator } from './member-expression/member-expression.translator';
 import { RelationalExpressionTranslator } from './relational-expression/relational-expression.translator';
+import { StringFormatExpressionTranslator } from './string-format-expression/string-format-expression.translator';
 
 export function getExpressionTranslator(tree: ExpressionTree): ExpressionTranslator {
     if (tree instanceof IdExpressionTree) return new IdExpressionTranslator(tree);
@@ -28,5 +30,8 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
     if (tree instanceof AddSubExpressionTree) return new AddSubExpressionTranslator(tree);
     if (tree instanceof LogicalAndExpressionTree) return new LogicalAndExpressionTranslator(tree);
     if (tree instanceof LogicalOrExpressionTree) return new LogicalOrExpressionTranslator(tree);
+    if (tree instanceof StringFormatExpressionTree)
+        return new StringFormatExpressionTranslator(tree);
+
     throw 'No Expression found for ' + tree.type;
 }

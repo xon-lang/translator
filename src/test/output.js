@@ -17,7 +17,7 @@ function renderPlugin() {
     const battery = await si.battery();
     chargeIcon = battery.ischarging && '⚡' || '';
     color = getChargeColor(battery.percent);
-    console.log(color + chargeIcon + battery.percent + '% | size=13');
+    console.log(`${color}${chargeIcon}${battery.percent}% | size=13`);
     console.log('---');
     console.log('Refresh|refresh=true');
 }

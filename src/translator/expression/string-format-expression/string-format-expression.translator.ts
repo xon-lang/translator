@@ -1,0 +1,17 @@
+import { StringFormatExpressionTree } from '@xon/ast';
+import { getExpressionTranslator } from '../expression-helper';
+import { ExpressionTranslator } from '../expression.translator';
+
+export class StringFormatExpressionTranslator extends ExpressionTranslator {
+    constructor(public tree: StringFormatExpressionTree) {
+        super();
+    }
+
+    translate() {
+        return (
+            '`' +
+            this.tree.getString(x => '${' + getExpressionTranslator(x).translate() + '}') +
+            '`'
+        );
+    }
+}
