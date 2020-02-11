@@ -1,20 +1,17 @@
-import { ScopeTree } from '@xon/ast';
-import { indent } from '../../util/string.util';
-import { BaseTranslator } from '../base.translator';
-import { getStatementTranslator } from '../statement/statement-helper';
+import { ScopeStatementTree } from '@xon/ast';
+import { indent } from '../../../util/string.util';
+import { BaseTranslator } from '../../base.translator';
+import { getStatementTranslator } from '../statement-helper';
 
-export class ScopeTranslator extends BaseTranslator {
-    constructor(public tree: ScopeTree) {
+export class ScopeStatementTranslator extends BaseTranslator {
+    constructor(public tree: ScopeStatementTree) {
         super();
     }
 
     translate() {
         const scope = { name: this.tree.name, vars: [] };
         this.scopes.push(scope);
-        const items = [
-            ...this.tree.statements.map(getStatementTranslator),
-            ...this.tree.scopes.map(x => new ScopeTranslator(x)),
-        ];
+        const items = this.tree.statements.map(getStatementTranslator);
 
         const args = this.tree.args
             .map(x => `${x.name}${x.value ? ' = ' + x.value : ''}`)

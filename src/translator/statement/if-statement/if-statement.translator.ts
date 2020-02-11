@@ -19,7 +19,7 @@ export class IfStatementTranslator extends StatementTranslator {
 
         let result = `if (${ifCondition}) {\n${indent(ifStatements)}\n}`;
 
-        if (this.tree.elseStatements.length) {
+        if (this.tree.elseStatements) {
             result += ` else `;
             if (this.tree.elseCondition) {
                 const elseCondition = getExpressionTranslator(this.tree.elseCondition).translate();

@@ -12,7 +12,7 @@ si = require(systeminformation);
 renderPlugin();
 function renderPlugin() {
     let chargeIcon, color;
-    const battery = await si.battery()
+    const battery = await si.battery();
     chargeIcon = battery.ischarging && '⚡' || '';
     color = getChargeColor(battery.percent);
     console.log(`${color}${chargeIcon}${battery.percent}% | size=13`);
