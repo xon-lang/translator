@@ -20,7 +20,7 @@
         "translator",
         "programming language"
     ],
-    "license": "Apache-2.0",
+    "license": "MIT",
     "scripts": {
         "test": "jest",
         "preversion": "npm run test",
