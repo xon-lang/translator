@@ -1,5 +1,4 @@
 #!/usr/bin/env /usr/local/bin/node
-
 // <bitbar.title>Hubstaff Info</bitbar.title>
 // <bitbar.version>v1.0.0</bitbar.version>
 // <bitbar.author>Nizami</bitbar.author>
@@ -8,18 +7,18 @@
 // <bitbar.dependencies>node.js</bitbar.dependencies>
 // <bitbar.image>https://i.imgur.com/0aNslKx.png</bitbar.image>
 /*jshint esversion: 6 */
-si = require(systeminformation);
+si = require('systeminformation');
 renderPlugin();
-function renderPlugin() {
-    let chargeIcon, color;
-    const battery = await si.battery();
+function render_plugin() {
+    let battery, chargeIcon, color;
+    battery = si.batter();
     chargeIcon = battery.ischarging && '⚡' || '';
     color = getChargeColor(battery.percent);
     console.log(`${color}${chargeIcon}${battery.percent}% | size=13`);
     console.log('---');
     console.log('Refresh|refresh=true');
 }
-function getChargeColor(p) {
+function get_charge_color(p) {
     if (p > 40) {
         return '\u001b[32m';
     }

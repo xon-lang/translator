@@ -1,8 +1,12 @@
 
 
-async battery {
+~ battery {
     #{
         si = require("systeminformation")
         #{const battery = await si.battery();}
     }
 }
+
+~ battery:
+    #si = require("systeminformation")
+    #const battery = await si.battery();

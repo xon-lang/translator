@@ -1,16 +1,6 @@
-import {
-    AddSubExpressionTree,
-    ExpressionTree,
-    FunctionExpressionTree,
-    IdExpressionTree,
-    LiteralExpressionTree,
-    LogicalAndExpressionTree,
-    LogicalOrExpressionTree,
-    MemberExpressionTree,
-    RelationalExpressionTree,
-    StringFormatExpressionTree,
-} from '@xon/ast';
+import { AddSubExpressionTree, BitNotExpressionTree, ExpressionTree, FunctionExpressionTree, IdExpressionTree, LiteralExpressionTree, LogicalAndExpressionTree, LogicalOrExpressionTree, MemberExpressionTree, RelationalExpressionTree, StringFormatExpressionTree } from '@xon/ast';
 import { AddSubExpressionTranslator } from './add-sub-expression/add-sub-expression.translator';
+import { BitNotExpressionTranslator } from './bit-not-expression/bit-not-expression.translator';
 import { ExpressionTranslator } from './expression.translator';
 import { FunctionExpressionTranslator } from './function-expression/function-expression.translator';
 import { IdExpressionTranslator } from './id-expression/id-expression.translator';
@@ -32,6 +22,7 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
     if (tree instanceof LogicalOrExpressionTree) return new LogicalOrExpressionTranslator(tree);
     if (tree instanceof StringFormatExpressionTree)
         return new StringFormatExpressionTranslator(tree);
+    if (tree instanceof BitNotExpressionTree) return new BitNotExpressionTranslator(tree);
 
     throw 'No Expression found for ' + tree.type;
 }
