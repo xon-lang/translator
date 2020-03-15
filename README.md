@@ -1,2 +1,3 @@
-# xon-js
-XON to js translator
+# translator
+Supported tranlators:
+* TypeScript
