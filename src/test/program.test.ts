@@ -1,7 +1,7 @@
 import { parseCode, ProgramTree } from '@xon/ast';
 import * as fs from 'fs';
 import * as path from 'path';
-import { ProgramTranslator } from '../translator/program/program.translator';
+import { ProgramTranslator } from '../tree/program/program.translator';
 
 test('generate', () => {
     const dir = path.resolve(__dirname, '../../src/test/');

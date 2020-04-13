@@ -9,6 +9,4 @@
 /*jshint esversion: 6 */
 si = require('systeminformation');
 renderPlugin();
-function render_plugin() {
-    const battery = await si.battery();
-}
+render_plugin;
