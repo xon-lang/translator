@@ -23,6 +23,6 @@ export class ScopeStatementTranslator extends BaseTranslator {
         }
 
         this.scopes.pop();
-        return `function ${this.tree.name}(${args}) {\n${indent(body)}\n}`;
+        return `function ${this.tree.name}(${args}) {\n${indent(body)}\n}\n`;
     }
 }

@@ -1,13 +1,4 @@
-import {
-    AssignmentStatementTree,
-    ExpressionStatementTree,
-    IfStatementTree,
-    LineBreakStatementTree,
-    PreprocessorStatementTree,
-    ReturnStatementTree,
-    ScopeStatementTree,
-    StatementTree,
-} from '@xon/ast';
+import { AssignmentStatementTree, ExpressionStatementTree, IfStatementTree, LineBreakStatementTree, PreprocessorStatementTree, ReturnStatementTree, ScopeStatementTree, StatementTree } from '@xon/ast';
 import { AssignmentStatementTranslator } from './assignment-statement/assignment-statement.translator';
 import { ExpressionStatementTranslator } from './expression-statement/expression-statement.translator';
 import { IfStatementTranslator } from './if-statement/if-statement.translator';
@@ -26,5 +17,5 @@ export function getStatementTranslator(tree: StatementTree): StatementTranslator
     if (tree instanceof LineBreakStatementTree) return new LineBreakStatementTranslator(tree);
     if (tree instanceof ScopeStatementTree) return new ScopeStatementTranslator(tree);
 
-    throw 'No Statement found for ' + tree.type;
+    throw Error('No Statement found for ' + tree.type);
 }

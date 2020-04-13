@@ -24,5 +24,5 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
         return new StringFormatExpressionTranslator(tree);
     if (tree instanceof BitNotExpressionTree) return new BitNotExpressionTranslator(tree);
 
-    throw 'No Expression found for ' + tree.type;
+    throw Error('No Expression found for ' + tree.type);
 }

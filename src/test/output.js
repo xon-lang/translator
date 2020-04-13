@@ -10,22 +10,5 @@
 si = require('systeminformation');
 renderPlugin();
 function render_plugin() {
-    let battery, chargeIcon, color;
-    battery = si.batter();
-    chargeIcon = battery.ischarging && '⚡' || '';
-    color = getChargeColor(battery.percent);
-    console.log(`${color}${chargeIcon}${battery.percent}% | size=13`);
-    console.log('---');
-    console.log('Refresh|refresh=true');
-}
-function get_charge_color(p) {
-    if (p > 40) {
-        return '\u001b[32m';
-    }
-    if (p > 20) {
-        return '\u001b[33m';
-    }
-    if (p > 0) {
-        return '\u001b[31m';
-    }
+    const battery = await si.battery();
 }
