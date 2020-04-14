@@ -1,6 +1,6 @@
 import { AssignmentStatementTree } from '@xon/ast';
-import { getExpressionTranslator } from '../../expression/expression-helper';
-import { StatementTranslator } from '../statement.translator';
+import { getExpressionTranslator } from '../expression/expression-helper';
+import { StatementTranslator } from './statement.translator';
 
 export class AssignmentStatementTranslator extends StatementTranslator {
     constructor(public tree: AssignmentStatementTree) {

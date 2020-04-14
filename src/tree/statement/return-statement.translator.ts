@@ -1,7 +1,7 @@
 import { ReturnStatementTree } from '@xon/ast';
-import '../../../util/string.util';
-import { getExpressionTranslator } from '../../expression/expression-helper';
-import { StatementTranslator } from '../statement.translator';
+import '../../util/string.util';
+import { getExpressionTranslator } from '../expression/expression-helper';
+import { StatementTranslator } from './statement.translator';
 
 export class ReturnStatementTranslator extends StatementTranslator {
     constructor(public tree: ReturnStatementTree) {

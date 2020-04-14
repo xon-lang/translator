@@ -1,12 +1,12 @@
-import { IfStatementTree } from '@xon/ast';
-import '../../../util/string.util';
-import { indent } from '../../../util/string.util';
-import { getExpressionTranslator } from '../../expression/expression-helper';
-import { getStatementTranslator } from '../statement-helper';
-import { StatementTranslator } from '../statement.translator';
+import { IfExpressionTree } from '@xon/ast';
+import '../../util/string.util';
+import { indent } from '../../util/string.util';
+import { getStatementTranslator } from '../statement/statement-helper';
+import { getExpressionTranslator } from './expression-helper';
+import { ExpressionTranslator } from './expression.translator';
 
-export class IfStatementTranslator extends StatementTranslator {
-    constructor(public tree: IfStatementTree) {
+export class IfExpressionTranslator extends ExpressionTranslator {
+    constructor(public tree: IfExpressionTree) {
         super();
     }
 

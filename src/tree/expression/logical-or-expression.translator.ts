@@ -1,6 +1,6 @@
 import { LogicalOrExpressionTree } from '@xon/ast';
-import { getExpressionTranslator } from '../expression-helper';
-import { ExpressionTranslator } from '../expression.translator';
+import { getExpressionTranslator } from './expression-helper';
+import { ExpressionTranslator } from './expression.translator';
 
 export class LogicalOrExpressionTranslator extends ExpressionTranslator {
     constructor(public tree: LogicalOrExpressionTree) {

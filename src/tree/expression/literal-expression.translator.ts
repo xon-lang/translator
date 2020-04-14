@@ -1,6 +1,6 @@
 import { LiteralExpressionTree, StringLiteralTree } from '@xon/ast';
 // import {  StringLiteralTree } from '@xon/ast/dist/tree/literal/string-literal/string-literal.tree';
-import { ExpressionTranslator } from '../expression.translator';
+import { ExpressionTranslator } from './expression.translator';
 
 export class LiteralExpressionTranslator extends ExpressionTranslator {
     constructor(public tree: LiteralExpressionTree) {

@@ -1,6 +1,6 @@
 import { RelationalExpressionTree } from '@xon/ast';
-import { getExpressionTranslator } from '../expression-helper';
-import { ExpressionTranslator } from '../expression.translator';
+import { getExpressionTranslator } from './expression-helper';
+import { ExpressionTranslator } from './expression.translator';
 
 export class RelationalExpressionTranslator extends ExpressionTranslator {
     constructor(public tree: RelationalExpressionTree) {
