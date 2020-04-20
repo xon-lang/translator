@@ -7,7 +7,6 @@ test('generate', () => {
     const dir = path.resolve(__dirname, '../test/');
     const code = fs.readFileSync(dir + '/program.xon').toString();
     const tree = parseCode(code, ProgramTree);
-    tree.log()
     const translator = new ProgramTranslator(tree);
     fs.writeFileSync(dir + '/output.ts', translator.translate());
 });

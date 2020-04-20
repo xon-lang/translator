@@ -13,7 +13,7 @@ import { RelationalExpressionTranslator } from './relational-expression.translat
 import { SelectExpressionTranslator } from './select-expression.translator';
 import { StringFormatExpressionTranslator } from './string-format-expression.translator';
 
-export function getExpressionTranslator(tree: ExpressionTree, info: BaseTree = null): ExpressionTranslator {
+export function getExpressionTranslator(tree: ExpressionTree): ExpressionTranslator {
     if (tree === undefined) return undefined;
     if (tree instanceof IdExpressionTree) return new IdExpressionTranslator(tree);
     if (tree instanceof FunctionExpressionTree) return new FunctionExpressionTranslator(tree);
