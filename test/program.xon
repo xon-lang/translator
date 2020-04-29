@@ -1,18 +1,9 @@
-// #!/usr/bin/env /usr/local/bin/node
-// <bitbar.title>Hubstaff Info</bitbar.title>
-// <bitbar.version>v1.0.0</bitbar.version>
-// <bitbar.author>Nizami</bitbar.author>
-// <bitbar.author.github>nizami-dev</bitbar.author.github>
-// <bitbar.desc>Show Hubstaff info</bitbar.desc>
-// <bitbar.dependencies>node.js</bitbar.dependencies>
-// <bitbar.image>https://i.imgur.com/0aNslKx.png</bitbar.image>
-/*jshint esversion: 6 */
-
 si = require('systeminformation')
 
 render_plugin()
 
 render_plugin():
+    si = 8
     si.batter().then(init)
 
 get_charge_color(p number):
@@ -30,14 +21,15 @@ init(battery any):
 
 
 SimpleClass:
-    prop = 5
+    _prop = 5
     tryped number = 6
     only_typed string
 
     method(t number, v = 4, vt string = 'sff'): 5+5
 
-    location(x number, y number = 6): .coord(x, y)
+    location(x number, y number = 6): ._coord(x, y)
 
 
-    coord(x number, y number):
+    _coord(x number, y number):
         console.log(1 + 1)
+        console.log(222)

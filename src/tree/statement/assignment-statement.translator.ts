@@ -9,9 +9,9 @@ export class AssignmentStatementTranslator extends StatementTranslator {
 
     translate() {
         const value = getExpressionTranslator(this.tree.value).translate();
-        if (!this.lastScope.vars.includes(this.tree.name)) {
-            this.lastScope.vars.push(this.tree.name);
+        if (this.scopes.every(x => !x.includes(this.tree.name))) {
+            this.currentSope.push(this.tree.name);
         }
-        return `${this.tree.name} = ${value};`;
+        return `${this.tree.name} = ${value}`;
     }
 }

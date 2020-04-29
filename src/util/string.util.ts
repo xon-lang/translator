@@ -6,3 +6,10 @@ export function indent(s: string) {
         .map(x => INDENT_STR + x)
         .join('\n');
 }
+
+export function indent_skip_first(s: string) {
+    return s
+        .split('\n')
+        .map((x, i) => (i == 0 ? '' : INDENT_STR) + x)
+        .join('\n');
+}

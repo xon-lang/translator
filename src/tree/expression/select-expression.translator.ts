@@ -1,4 +1,5 @@
 import { SelectExpressionTree } from '@xon/ast';
+import { INDENT_STR } from '../../util/string.util';
 import { getStatementTranslator } from '../statement/statement-helper';
 import { getExpressionTranslator } from './expression-helper';
 import { ExpressionTranslator } from './expression.translator';
@@ -19,10 +20,10 @@ export class SelectExpressionTranslator extends ExpressionTranslator {
                 result += `(${getExpressionTranslator(item.value).translate()}) &&`
             }
 
-            result += `(${item.statements.map(x => getStatementTranslator(x).translate()).join(', ')})\n`
+            result += `(${item.statements.map(x => getStatementTranslator(x).translate()).join(', ')})`
             results.push(result);
         }
 
-        return '(' + results.join(' ||') + ')';
+        return '(' + results.join(`\n${INDENT_STR}||`) + ')';
     }
 }

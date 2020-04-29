@@ -1,8 +1,8 @@
 import { DefinitionTree } from '@xon/ast';
-import { INDENT_STR } from '../../util/string.util';
+import { indent, INDENT_STR } from '../../util/string.util';
 import { BaseTranslator } from '../base.translator';
 import { getExpressionTranslator } from '../expression/expression-helper';
-import { getStatementTranslator } from '../statement/statement-helper';
+import { FunctionTranslator } from '../function/function.translator';
 
 export class DefinitionTranslator extends BaseTranslator {
     constructor(public tree: DefinitionTree) {
@@ -10,28 +10,24 @@ export class DefinitionTranslator extends BaseTranslator {
     }
 
     translate() {
-        let result = `class ${this.tree.name} {`;
 
+        let header = `${this.tree.name.startsWith('_') ? '' : 'export '}class ${this.tree.name} {`;
+
+        let properties = []
         for (const prop of this.tree.properties) {
+            const name = prop.name.startsWith('_') ? `private ${prop.name}` : prop.name
             const type = prop.type ? `: ${prop.type}` : ''
             const value = prop.value ? ` = ${getExpressionTranslator(prop.value).translate()}` : ''
-            result += `\n${INDENT_STR}${prop.name}${type}${value};`
+            properties.push(`${INDENT_STR}${name}${type}${value};`)
         }
 
+        let methods = []
         for (const method of this.tree.methods) {
-            let argumentsArr = []
-            for (const arg of method.args) {
-                const type = arg.type ? `: ${arg.type}` : ''
-                const value = arg.value ? ` = ${getExpressionTranslator(arg.value).translate()}` : ''
-                argumentsArr.push(`${arg.name}${type}${value}`)
-            }
-            result += `\n${INDENT_STR}${method.name}(${argumentsArr.join(', ')}) {`
-            result += `\n${INDENT_STR}${INDENT_STR}` + method.statements
-                .map(getStatementTranslator).map(x => x.translate()).join('\n')
-            result += `\n${INDENT_STR}}`
+            const private_tr = method.name.startsWith('_') ? `private ` : ''
+            methods.push(indent(`${private_tr}` + new FunctionTranslator(method).translate()));
         }
 
 
-        return result + '\n}'
+        return `${header}\n${properties.join('\n')}\n\n${methods.join('\n\n')}\n}`
     }
 }

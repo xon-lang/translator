@@ -1,12 +1,12 @@
 import { BaseTree } from '@xon/ast';
 
 export abstract class BaseTranslator {
-    static scopes = [{ name: '', vars: [] }];
+    static scopes = [];
 
     get scopes() {
         return BaseTranslator.scopes;
     }
-    get lastScope() {
+    get currentSope() {
         return BaseTranslator.scopes[BaseTranslator.scopes.length - 1];
     }
 
