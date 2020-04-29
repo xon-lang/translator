@@ -12,6 +12,6 @@ export class AssignmentStatementTranslator extends StatementTranslator {
         if (!this.lastScope.vars.includes(this.tree.name)) {
             this.lastScope.vars.push(this.tree.name);
         }
-        return `${this.tree.name} = ${value}`;
+        return `${this.tree.name} = ${value};`;
     }
 }
