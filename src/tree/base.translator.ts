@@ -2,6 +2,7 @@ import { BaseTree } from '@xon/ast';
 
 export abstract class BaseTranslator {
     static scopes = [];
+    static uniqueCounter = 0;
 
     get scopes() {
         return BaseTranslator.scopes;
@@ -13,4 +14,8 @@ export abstract class BaseTranslator {
     tree: BaseTree;
 
     abstract translate();
+
+    getUniqueId() {
+        return '___id_' + BaseTranslator.uniqueCounter++;
+    }
 }
