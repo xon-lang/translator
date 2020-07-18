@@ -1,6 +1,6 @@
 import { AddSubExpressionTree, BitNotExpressionTree, ExpressionTree, FunctionExpressionTree, IdExpressionTree, IfExpressionTree, InstanceMemberExpressionTree, LiteralExpressionTree, LogicalAndExpressionTree, LogicalOrExpressionTree, MemberExpressionTree, RelationalExpressionTree, SelectExpressionTree, StringFormatExpressionTree } from '@xon/ast';
-import { AddSubExpressionTranslator } from './add-sub-expression.translator';
-import { BitNotExpressionTranslator } from './bit-not-expression.translator';
+import { AddSubExpressionTranslator } from './add-sub-expression/add-sub-expression.translator';
+import { BitNotExpressionTranslator } from './bit-not-expression.translator/bit-not-expression.translator';
 import { ExpressionTranslator } from './expression.translator';
 import { FunctionExpressionTranslator } from './function-expression.translator';
 import { IdExpressionTranslator } from './id-expression.translator';
