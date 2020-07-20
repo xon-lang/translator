@@ -1,7 +1,7 @@
 import { ProgramTree } from '@xon/ast';
 import { BaseTranslator } from '../base.translator';
 import { DefinitionTranslator } from '../definition/definition.translator';
-import { FunctionStatementTranslator } from '../statement/function-statement.translator';
+import { FunctionStatementTranslator } from '../statement/function-statement/function-statement.translator';
 import { getStatementTranslator } from '../statement/statement-helper';
 
 export class ProgramTranslator extends BaseTranslator {

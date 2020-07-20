@@ -1,10 +1,10 @@
 import { AssignmentStatementTree, ExpressionStatementTree, FunctionStatementTree, LineBreakStatementTree, PreprocessorStatementTree, ReturnStatementTree, StatementTree } from '@xon/ast';
-import { AssignmentStatementTranslator } from './assignment-statement.translator';
-import { ExpressionStatementTranslator } from './expression-statement.translator';
-import { FunctionStatementTranslator } from './function-statement.translator';
-import { LineBreakStatementTranslator } from './line-break-statement.translator';
-import { PreprocessorStatementTranslator } from './preprocessor-statement.translator';
-import { ReturnStatementTranslator } from './return-statement.translator';
+import { AssignmentStatementTranslator } from './assignment-statement/assignment-statement.translator';
+import { ExpressionStatementTranslator } from './expression-statement/expression-statement.translator';
+import { FunctionStatementTranslator } from './function-statement/function-statement.translator';
+import { LineBreakStatementTranslator } from './line-break-statement/line-break-statement.translator';
+import { PreprocessorStatementTranslator } from './preprocessor-statement/preprocessor-statement.translator';
+import { ReturnStatementTranslator } from './return-statement/return-statement.translator';
 import { StatementTranslator } from './statement.translator';
 
 export function getStatementTranslator(tree: StatementTree): StatementTranslator {
