@@ -22,7 +22,7 @@
     ],
     "license": "MIT",
     "scripts": {
-        "test": "npm run grammar && jest --no-cache",
+        "test": "jest --no-cache",
         "build": "scripts/build.sh",
         "pre-commit": "scripts/pre-commit.sh",
         "preversion": "npm run test",
@@ -44,6 +44,6 @@
         "typescript": "^3.9.7"
     },
     "dependencies": {
-        "@xon/ast": "file:../ast"
+        "@xon/ast": "^1.0.16"
     }
 }

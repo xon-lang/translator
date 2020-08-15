@@ -1,4 +1,4 @@
-import { BitNotExpressionTree, parseCode, InstanceMemberExpressionTree } from '@xon/ast';
+import { InstanceMemberExpressionTree, parseCode } from '@xon/ast';
 import { getExpressionTranslator } from '../expression-helper';
 
 test('instance', () => {
