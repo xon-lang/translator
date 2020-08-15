@@ -1,46 +1,47 @@
 {
-    "name": "@xon/xon-js",
+    "name": "@xon/translator",
     "author": "Nizami",
     "version": "1.0.0",
     "description": "XON to JS translator",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "main": "index.js",
+    "types": "index.d.ts",
     "bugs": {
-        "url": "https://github.com/xon-lang/xon-js/issues"
+        "url": "https://github.com/xon-lang/translator/issues"
     },
-    "homepage": "https://github.com/xon-lang/xon-js#readme",
+    "homepage": "https://github.com/xon-lang/translator#readme",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/xon-lang/xon-js.git"
+        "url": "git+https://github.com/xon-lang/translator.git"
     },
     "keywords": [
         "xon",
-        "xon-js",
+        "translator",
         "compiler",
         "translator",
         "programming language"
     ],
     "license": "MIT",
     "scripts": {
-        "test": "jest",
+        "test": "npm run grammar && jest --no-cache",
+        "build": "scripts/build.sh",
+        "pre-commit": "scripts/pre-commit.sh",
         "preversion": "npm run test",
-        "version": "",
-        "postversion": "git push && git push --tags",
-        "deploy": "rimraf dist && tsc && cp package.json dist && cp *.md dist && cd dist && npm publish"
+        "version": "npm run build",
+        "postversion": "git push && cd dist && npm publish --access public && rimraf ../dist"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run test"
+            "pre-commit": "npm run pre-commit"
         }
     },
     "devDependencies": {
-        "@types/jest": "^25.2.1",
-        "@types/node": "^13.11.1",
+        "@types/jest": "^26.0.10",
+        "@types/node": "^14.0.27",
         "husky": "^4.2.5",
-        "jest": "^25.3.0",
+        "jest": "^26.4.0",
         "rimraf": "^3.0.2",
-        "ts-jest": "^25.3.1",
-        "typescript": "^3.8.3"
+        "ts-jest": "^26.2.0",
+        "typescript": "^3.9.7"
     },
     "dependencies": {
         "@xon/ast": "file:../ast"
