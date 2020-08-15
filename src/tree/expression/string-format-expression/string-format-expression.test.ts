@@ -1,9 +1,7 @@
-import { parseCode, StringFormatExpressionTree } from '@xon/ast';
-import { getExpressionTranslator } from '../expression-helper';
+import { parseExpression } from '@xon/ast';
+import { translateExpression } from '../../../translate';
 
 test('string format', () => {
     const code = "f'My name is {'John'} and age is {20+7}'";
-    const tree = parseCode(code, StringFormatExpressionTree);
-    const result = getExpressionTranslator(tree).translate();
-    expect(result).toBe("'My name is ' + 'John' + ' and age is ' + 20 + 7");
+    expect(translateExpression(code)).toBe("'My name is ' + 'John' + ' and age is ' + (20 + 7)");
 });
