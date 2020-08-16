@@ -8,13 +8,13 @@ export function render_plugin() {
     si.batter().then(init)
 }
 
-export function get_charge_color(p: [object Object]) {
+export function get_charge_color(p: number) {
     return ((p > 40) &&('\u001b[32m')
         ||(p > 20) &&('\u001b[33m')
         ||(p > 0) &&('\u001b[31m'))
 }
 
-export function init(battery: [object Object]) {
+export function init(battery: any) {
     let chargeIcon, color;
     chargeIcon = battery.ischarging && '⚡' || ''
     color = get_charge_color(battery.percent)
@@ -24,19 +24,21 @@ export function init(battery: [object Object]) {
 }
 
 export class SimpleClass {
-    private _prop: [object Object] = 5;
-    tryped: [object Object] = 6;
-    only_typed: [object Object];
+    private _prop: number = 5;
+    tryped: number = 6;
+    only_typed: string;
 
-    method(t: [object Object], v = 4, vt: [object Object] = 'sff') {
-        5 + 5
+    method(t: number, v = 4, vt: string = 'sff') {
+        if (t + v + vt) {
+        render_plugin()
+    }
     }
 
-    location(x: [object Object], y: [object Object] = 6) {
-        this._coord(x, y)
+    location(x: {z: number, dim: string}, y: number = 6) {
+        this._coord(x.z, y)
     }
 
-    private _coord(x: [object Object], y: [object Object]) {
+    private _coord(x: number, y: number) {
         console.log(1 + 1)
         console.log(222)
     }
