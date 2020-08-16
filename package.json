@@ -23,6 +23,7 @@
     "license": "MIT",
     "scripts": {
         "test": "jest --no-cache",
+        "sandbox": "rimraf sandbox/dist && npx tsc -p tsconfig.sandbox.json && node sandbox/dist/sandbox/index.js",
         "build": "scripts/build.sh",
         "pre-commit": "scripts/pre-commit.sh",
         "preversion": "npm run test",
