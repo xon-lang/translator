@@ -1,3 +1,1 @@
-# translator
-Supported tranlators:
-* TypeScript
+# XON to TS translator
