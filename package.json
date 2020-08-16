@@ -1,23 +1,22 @@
 {
-    "name": "@xon/translator",
+    "name": "@xon/translator-ts",
     "author": "Nizami",
     "version": "1.0.0",
-    "description": "XON to JS translator",
+    "description": "XON to TS translator-ts",
     "main": "index.js",
     "types": "index.d.ts",
     "bugs": {
-        "url": "https://github.com/xon-lang/translator/issues"
+        "url": "https://github.com/xon-lang/translator-ts/issues"
     },
-    "homepage": "https://github.com/xon-lang/translator#readme",
+    "homepage": "https://github.com/xon-lang/translator-ts#readme",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/xon-lang/translator.git"
+        "url": "git+https://github.com/xon-lang/translator-ts.git"
     },
     "keywords": [
         "xon",
         "translator",
         "compiler",
-        "translator",
         "programming language"
     ],
     "license": "MIT",
