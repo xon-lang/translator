@@ -14,5 +14,5 @@
             "*": ["node_modules/*"]
         }
     },
-    "include": ["src/**/*", "sandbox", "tests"]
+    "include": ["src/**/*", "sandbox", "complex-tests"]
 }
