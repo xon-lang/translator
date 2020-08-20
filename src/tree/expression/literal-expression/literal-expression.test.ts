@@ -19,7 +19,7 @@ test('string literal', () => {
     const code = "'string literal'";
     const tree = parseCode(code, LiteralExpressionTree);
     const result = getExpressionTranslator(tree).translate();
-    expect(result).toBe("'string literal'");
+    expect(result).toBe('`string literal`');
 });
 
 test('null literal', () => {
