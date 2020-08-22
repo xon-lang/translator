@@ -39,12 +39,12 @@
         "@types/node": "^14.6.0",
         "create-ts-index": "^1.13.5",
         "husky": "^4.2.5",
-        "jest": "^26.4.1",
+        "jest": "^26.4.2",
         "rimraf": "^3.0.2",
         "ts-jest": "^26.2.0",
         "typescript": "^3.9.7"
     },
     "dependencies": {
-        "@xon/ast": "^1.2.0"
+        "@xon/ast": "^1.2.1"
     }
 }
