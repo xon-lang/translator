@@ -20,6 +20,7 @@ import {
     LessThanExpressionTree,
     LiteralExpressionTree,
     LogicalAndExpressionTree,
+    LogicalNotExpressionTree,
     LogicalOrExpressionTree,
     LoopExpressionTree,
     MemberExpressionTree,
@@ -53,6 +54,7 @@ import { LessThanEqualsExpressionTranslator } from './less-than-equals-expressio
 import { LessThanExpressionTranslator } from './less-than-expression/less-than-expression.translator';
 import { LiteralExpressionTranslator } from './literal-expression/literal-expression.translator';
 import { LogicalAndExpressionTranslator } from './logical-and-expression/logical-and-expression.translator';
+import { LogicalNotExpressionTranslator } from './logical-not-expression/logical-not-expression.translator';
 import { LogicalOrExpressionTranslator } from './logical-or-expression/logical-or-expression.translator';
 import { MemberExpressionTranslator } from './member-expression/member-expression.translator';
 import { MoreThanEqualsExpressionTranslator } from './more-than-equals-expression/more-than-equals-expression.translator';
@@ -102,6 +104,7 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
     if (tree instanceof NotEqualsExpressionTree) return new NotEqualsExpressionTranslator(tree);
     if (tree instanceof IndexExpressionTree) return new IndexExpressionTranslator(tree);
     if (tree instanceof LambdaExpressionTree) return new LambdaExpressionTranslator(tree);
+    if (tree instanceof LogicalNotExpressionTree) return new LogicalNotExpressionTranslator(tree);
 
     if (tree instanceof ParenthesizedExpressionTree) {
         if (
