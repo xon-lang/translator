@@ -1,7 +1,12 @@
 import {
     AddExpressionTree,
     ArrayExpressionTree,
+    BitAndExpressionTree,
+    BitLeftShiftExpressionTree,
     BitNotExpressionTree,
+    BitOrExpressionTree,
+    BitRightShiftExpressionTree,
+    BitXorExpressionTree,
     DivideExpressionTree,
     EqualsExpressionTree,
     ExpressionTree,
@@ -27,7 +32,12 @@ import {
 } from '@xon/ast';
 import { AddExpressionTranslator } from './add-expression/add-expression.translator';
 import { ArrayExpressionTranslator } from './array-expression/array-expression.translator';
-import { BitNotExpressionTranslator } from './bit-not-expression.translator/bit-not-expression.translator';
+import { BitAndExpressionTranslator } from './bit-and-expression/bit-and-expression.translator';
+import { BitLeftShiftExpressionTranslator } from './bit-left-shift-expression/bit-left-shift-expression.translator';
+import { BitNotExpressionTranslator } from './bit-not-expression/bit-not-expression.translator';
+import { BitOrExpressionTranslator } from './bit-or-expression/bit-or-expression.translator';
+import { BitRightShiftExpressionTranslator } from './bit-right-shift-expression/bit-right-shift-expression.translator';
+import { BitXorExpressionTranslator } from './bit-xor-expression/bit-xor-expression.translator';
 import { DivideExpressionTranslator } from './divide-expression/divide-expression.translator';
 import { EqualsExpressionTranslator } from './equals-expression/equals-expression.translator';
 import { ExpressionTranslator } from './expression.translator';
@@ -73,7 +83,14 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
     if (tree instanceof LogicalOrExpressionTree) return new LogicalOrExpressionTranslator(tree);
     if (tree instanceof StringFormatExpressionTree)
         return new StringFormatExpressionTranslator(tree);
+    if (tree instanceof BitAndExpressionTree) return new BitAndExpressionTranslator(tree);
+    if (tree instanceof BitLeftShiftExpressionTree)
+        return new BitLeftShiftExpressionTranslator(tree);
     if (tree instanceof BitNotExpressionTree) return new BitNotExpressionTranslator(tree);
+    if (tree instanceof BitOrExpressionTree) return new BitOrExpressionTranslator(tree);
+    if (tree instanceof BitRightShiftExpressionTree)
+        return new BitRightShiftExpressionTranslator(tree);
+    if (tree instanceof BitXorExpressionTree) return new BitXorExpressionTranslator(tree);
     if (tree instanceof IfExpressionTree) return new IfExpressionTranslator(tree);
     if (tree instanceof SelectExpressionTree) return new SelectExpressionTranslator(tree);
     if (tree instanceof ArrayExpressionTree) return new ArrayExpressionTranslator(tree);
