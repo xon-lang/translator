@@ -48,6 +48,6 @@ export class ProgramTranslator extends BaseTranslator {
 
         return `${vars}\n${statements.join('\n')}\n\n${functions.join(
             '\n\n'
-        )}\n\n${definitions.join('\n\n')}`;
+        )}\n\n${definitions.join('\n\n')}`.trim();
     }
 }

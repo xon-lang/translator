@@ -22,7 +22,7 @@ function compare(name: string) {
         const tree = parseCode(inputCode, ProgramTree);
         const translator = new ProgramTranslator(tree);
 
-        fs.writeFileSync(path.resolve(complexTestsDir, name + '.generated.ts'), outputCode);
+        fs.writeFileSync(path.resolve(complexTestsDir, name + '.generated.ts'), translator.translate());
 
         expect(translator.translate()).toBe(outputCode);
     };
