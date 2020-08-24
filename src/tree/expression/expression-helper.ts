@@ -56,6 +56,7 @@ import { LiteralExpressionTranslator } from './literal-expression/literal-expres
 import { LogicalAndExpressionTranslator } from './logical-and-expression/logical-and-expression.translator';
 import { LogicalNotExpressionTranslator } from './logical-not-expression/logical-not-expression.translator';
 import { LogicalOrExpressionTranslator } from './logical-or-expression/logical-or-expression.translator';
+import { LoopExpressionTranslator } from './loop-expression/loop-expression.translator';
 import { MemberExpressionTranslator } from './member-expression/member-expression.translator';
 import { MoreThanEqualsExpressionTranslator } from './more-than-equals-expression/more-than-equals-expression.translator';
 import { MoreThanExpressionTranslator } from './more-than-expression/more-than-expression.translator';
@@ -105,6 +106,7 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
     if (tree instanceof IndexExpressionTree) return new IndexExpressionTranslator(tree);
     if (tree instanceof LambdaExpressionTree) return new LambdaExpressionTranslator(tree);
     if (tree instanceof LogicalNotExpressionTree) return new LogicalNotExpressionTranslator(tree);
+    if (tree instanceof LoopExpressionTree) return new LoopExpressionTranslator(tree);
 
     if (tree instanceof ParenthesizedExpressionTree) {
         if (
