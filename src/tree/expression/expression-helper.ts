@@ -32,6 +32,7 @@ import {
     ParenthesizedExpressionTree,
     PipeExpressionTree,
     PowExpressionTree,
+    RangeExpressionTree,
     SelectExpressionTree,
     StringFormatExpressionTree,
     SubstractExpressionTree,
@@ -69,6 +70,7 @@ import { NotEqualsExpressionTranslator } from './not-equals-expression/not-equal
 import { ParenthesizedExpressionTranslator } from './parenthesized-expression/parenthesized-expression.translator';
 import { PipeExpressionTranslator } from './pipe-expression/pipe-expression.translator';
 import { PowExpressionTranslator } from './pow-expression/pow-expression.translator';
+import { RangeExpressionTranslator } from './range-expression/range-expression.translator';
 import { SelectExpressionTranslator } from './select-expression/select-expression.translator';
 import { StringFormatExpressionTranslator } from './string-format-expression/string-format-expression.translator';
 import { SubstractExpressionTranslator } from './substract-expression/substract-expression.translator';
@@ -116,6 +118,7 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
     if (tree instanceof ModuloExpressionTree) return new ModuloExpressionTranslator(tree);
     if (tree instanceof PipeExpressionTree) return new PipeExpressionTranslator(tree);
     if (tree instanceof PowExpressionTree) return new PowExpressionTranslator(tree);
+    if (tree instanceof RangeExpressionTree) return new RangeExpressionTranslator(tree);
 
     if (tree instanceof ParenthesizedExpressionTree) {
         if (
