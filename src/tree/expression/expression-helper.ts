@@ -30,6 +30,7 @@ import {
     MultiplyExpressionTree,
     NotEqualsExpressionTree,
     ParenthesizedExpressionTree,
+    PipeExpressionTree,
     SelectExpressionTree,
     StringFormatExpressionTree,
     SubstractExpressionTree,
@@ -65,6 +66,7 @@ import { MoreThanExpressionTranslator } from './more-than-expression/more-than-e
 import { MultiplyExpressionTranslator } from './multiply-expression/multiply-expression.translator';
 import { NotEqualsExpressionTranslator } from './not-equals-expression/not-equals-expression.translator';
 import { ParenthesizedExpressionTranslator } from './parenthesized-expression/parenthesized-expression.translator';
+import { PipeExpressionTranslator } from './pipe-expression/pipe-expression.translator';
 import { SelectExpressionTranslator } from './select-expression/select-expression.translator';
 import { StringFormatExpressionTranslator } from './string-format-expression/string-format-expression.translator';
 import { SubstractExpressionTranslator } from './substract-expression/substract-expression.translator';
@@ -110,6 +112,7 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
     if (tree instanceof LogicalNotExpressionTree) return new LogicalNotExpressionTranslator(tree);
     if (tree instanceof LoopExpressionTree) return new LoopExpressionTranslator(tree);
     if (tree instanceof ModuloExpressionTree) return new ModuloExpressionTranslator(tree);
+    if (tree instanceof PipeExpressionTree) return new PipeExpressionTranslator(tree);
 
     if (tree instanceof ParenthesizedExpressionTree) {
         if (
