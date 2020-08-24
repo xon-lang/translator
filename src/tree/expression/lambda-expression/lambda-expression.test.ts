@@ -1,7 +1,7 @@
 import { translateExpression } from '../../../translate';
 
-test('bit or', () => {
-    const code = '234 or 123';
+test('lambda', () => {
+    const code = '\\x,y,z: x+y+z';
     const result = translateExpression(code);
-    expect(result).toBe('234 | 123');
+    expect(result).toBe('(x, y, z) => x + y + z');
 });

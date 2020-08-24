@@ -1,6 +1,6 @@
 import { translateExpression } from '../../../translate';
 
-test('bit not', () => {
+test('bit left shift', () => {
     const code = '234 << 123';
     const result = translateExpression(code);
     expect(result).toBe('234 << 123');
