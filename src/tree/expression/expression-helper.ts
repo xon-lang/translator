@@ -38,6 +38,7 @@ import {
     StringFormatExpressionTree,
     SubstractExpressionTree,
     UnaryMinusExpressionTree,
+    UnaryPlusExpressionTree,
 } from '@xon/ast';
 import { AddExpressionTranslator } from './add-expression/add-expression.translator';
 import { ArrayExpressionTranslator } from './array-expression/array-expression.translator';
@@ -78,6 +79,7 @@ import { SliceExpressionTranslator } from './slice-expression/slice-expression.t
 import { StringFormatExpressionTranslator } from './string-format-expression/string-format-expression.translator';
 import { SubstractExpressionTranslator } from './substract-expression/substract-expression.translator';
 import { UnaryMinusExpressionTranslator } from './unary-minus-expression/unary-minus-expression.translator';
+import { UnaryPlusExpressionTranslator } from './unary-plus-expression/unary-plus-expression.translator';
 
 export function getExpressionTranslator(tree: ExpressionTree): ExpressionTranslator {
     if (tree === undefined) return undefined;
@@ -125,6 +127,7 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
     if (tree instanceof RangeExpressionTree) return new RangeExpressionTranslator(tree);
     if (tree instanceof SliceExpressionTree) return new SliceExpressionTranslator(tree);
     if (tree instanceof UnaryMinusExpressionTree) return new UnaryMinusExpressionTranslator(tree);
+    if (tree instanceof UnaryPlusExpressionTree) return new UnaryPlusExpressionTranslator(tree);
 
     if (tree instanceof ParenthesizedExpressionTree) {
         if (
