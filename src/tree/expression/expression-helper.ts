@@ -13,6 +13,7 @@ import {
     FunctionExpressionTree,
     IdExpressionTree,
     IfExpressionTree,
+    IndexExpressionTree,
     InstanceMemberExpressionTree,
     LessThanEqualsExpressionTree,
     LessThanExpressionTree,
@@ -44,7 +45,8 @@ import { ExpressionTranslator } from './expression.translator';
 import { FunctionExpressionTranslator } from './function-expression/function-expression.translator';
 import { IdExpressionTranslator } from './id-expression/id-expression.translator';
 import { IfExpressionTranslator } from './if-expression/if-expression.translator';
-import { InstanceMemberExpressionTranslator } from './instance-expression/instance-member-expression.translator';
+import { IndexExpressionTranslator } from './index-expression/index-expression.translator';
+import { InstanceMemberExpressionTranslator } from './instance-member-expression/instance-member-expression.translator';
 import { LessThanEqualsExpressionTranslator } from './less-than-equals-expression/less-than-equals-expression.translator';
 import { LessThanExpressionTranslator } from './less-than-expression/less-than-expression.translator';
 import { LiteralExpressionTranslator } from './literal-expression/literal-expression.translator';
@@ -96,6 +98,7 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
     if (tree instanceof ArrayExpressionTree) return new ArrayExpressionTranslator(tree);
     if (tree instanceof EqualsExpressionTree) return new EqualsExpressionTranslator(tree);
     if (tree instanceof NotEqualsExpressionTree) return new NotEqualsExpressionTranslator(tree);
+    if (tree instanceof IndexExpressionTree) return new IndexExpressionTranslator(tree);
 
     if (tree instanceof ParenthesizedExpressionTree) {
         if (
