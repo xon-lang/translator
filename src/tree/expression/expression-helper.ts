@@ -24,6 +24,7 @@ import {
     LogicalOrExpressionTree,
     LoopExpressionTree,
     MemberExpressionTree,
+    ModuloExpressionTree,
     MoreThanEqualsExpressionTree,
     MoreThanExpressionTree,
     MultiplyExpressionTree,
@@ -58,6 +59,7 @@ import { LogicalNotExpressionTranslator } from './logical-not-expression/logical
 import { LogicalOrExpressionTranslator } from './logical-or-expression/logical-or-expression.translator';
 import { LoopExpressionTranslator } from './loop-expression/loop-expression.translator';
 import { MemberExpressionTranslator } from './member-expression/member-expression.translator';
+import { ModuloExpressionTranslator } from './modulo-expression/modulo-expression.translator';
 import { MoreThanEqualsExpressionTranslator } from './more-than-equals-expression/more-than-equals-expression.translator';
 import { MoreThanExpressionTranslator } from './more-than-expression/more-than-expression.translator';
 import { MultiplyExpressionTranslator } from './multiply-expression/multiply-expression.translator';
@@ -107,6 +109,7 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
     if (tree instanceof LambdaExpressionTree) return new LambdaExpressionTranslator(tree);
     if (tree instanceof LogicalNotExpressionTree) return new LogicalNotExpressionTranslator(tree);
     if (tree instanceof LoopExpressionTree) return new LoopExpressionTranslator(tree);
+    if (tree instanceof ModuloExpressionTree) return new ModuloExpressionTranslator(tree);
 
     if (tree instanceof ParenthesizedExpressionTree) {
         if (
