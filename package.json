@@ -17,7 +17,8 @@
         "xon",
         "translator",
         "compiler",
-        "programming language"
+        "programming language",
+        "typescript"
     ],
     "license": "MIT",
     "scripts": {
