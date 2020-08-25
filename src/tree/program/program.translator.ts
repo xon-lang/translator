@@ -46,8 +46,14 @@ export class ProgramTranslator extends BaseTranslator {
             vars += `let ${private_vars.join(', ')};`;
         }
 
-        return `${vars}\n${statements.join('\n')}\n\n${functions.join(
-            '\n\n'
-        )}\n\n${definitions.join('\n\n')}`.trim();
+        return (
+            vars +
+            (statements.length ? '\n' : '') +
+            statements.join('\n') +
+            (functions.length ? '\n\n' : '') +
+            functions.join('\n\n') +
+            (definitions.length ? '\n\n' : '') +
+            definitions.join('\n\n')
+        );
     }
 }
