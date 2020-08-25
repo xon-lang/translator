@@ -18,13 +18,13 @@ export class LoopExpressionTranslator extends ExpressionTranslator {
             .join('\n');
 
         if (this.tree.isInfinity) {
-            return `for(;;) {\n${indent(statements)}\n}`;
+            return `for (;;) {\n${indent(statements)}\n}`;
         }
 
         const expression = getExpressionTranslator(this.tree.expression).translate();
         return (
             `let ${indexName} = 0;\n` +
-            `for(let ${keyName} in ${expression}) {\n` +
+            `for (let ${keyName} in ${expression}) {\n` +
             indent(
                 `${indexName}++;\n` +
                     `let ${valueName} = (${expression})[${keyName}];\n` +
