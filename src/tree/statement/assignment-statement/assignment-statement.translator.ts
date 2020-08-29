@@ -10,11 +10,11 @@ export class AssignmentStatementTranslator extends StatementTranslator {
     translate() {
         // if only variable
         const valueTr = getExpressionTranslator(this.tree.value).translate();
-        if (this.tree.name) {
-            if (this.scopes.every((x) => !x.includes(this.tree.name))) {
-                this.currentSope.push(this.tree.name);
+        if (this.tree.singleAssigments.length == 1) {
+            if (this.scopes.every((x) => !x.includes(this.tree.singleAssigments[0].name))) {
+                this.currentSope.push(this.tree.singleAssigments[0].name);
             }
-            return `${this.tree.name} = ${valueTr}`;
+            return `${this.tree.singleAssigments[0].name} = ${valueTr}`;
         }
 
         // for multiple variables
@@ -33,10 +33,10 @@ export class AssignmentStatementTranslator extends StatementTranslator {
 
         let result = `${valueId} = ${valueTr}`;
 
-        if(this.tree.value.getType().asArray)
-        for (const item of this.tree.singleAssigments) {
-            result += `\n${item.name} = ${valueId}[${item.index}]`;
-        }
-        return `${this.tree.name} = ${valueTr}`;
+        if (this.tree.value.getType().asArray)
+            for (const item of this.tree.singleAssigments) {
+                result += `\n${item.name} = ${valueId}[${item.index}]`;
+            }
+        return `${this.tree.singleAssigments[0].name} = ${valueTr}`;
     }
 }
