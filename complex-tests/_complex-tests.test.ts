@@ -1,7 +1,6 @@
-import { parseCode, ProgramTree } from '@xon/ast';
 import * as fs from 'fs';
 import * as path from 'path';
-import { ProgramTranslator } from '../src/tree/program/program.translator';
+import { translateProgram } from '../src/translate';
 
 const complexTestsDir = path.resolve(__dirname, '../complex-tests/');
 
@@ -19,11 +18,12 @@ function compare(name: string) {
         const outputCode = fs
             .readFileSync(path.resolve(complexTestsDir, outputFilename))
             .toString();
-        const tree = parseCode(inputCode, ProgramTree);
-        const translator = new ProgramTranslator(tree);
 
-        fs.writeFileSync(path.resolve(complexTestsDir, name + '.generated.ts'), translator.translate());
+        fs.writeFileSync(
+            path.resolve(complexTestsDir, name + '.generated.ts'),
+            translateProgram(inputCode)
+        );
 
-        expect(translator.translate()).toBe(outputCode);
+        expect(translateProgram(inputCode)).toBe(outputCode);
     };
 }

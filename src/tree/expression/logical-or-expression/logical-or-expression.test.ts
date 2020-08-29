@@ -1,9 +1,6 @@
-import { LogicalOrExpressionTree, parseCode } from '@xon/ast';
-import { getExpressionTranslator } from '../expression-helper';
+import { translateExpression } from '../../../translate';
 
 test('logical or', () => {
     const code = '88 ||  1 ';
-    const tree = parseCode(code, LogicalOrExpressionTree);
-    const result = getExpressionTranslator(tree).translate();
-    expect(result).toBe('88 || 1');
+    expect(translateExpression(code)).toBe('88 || 1');
 });

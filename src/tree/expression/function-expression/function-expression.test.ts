@@ -1,9 +1,6 @@
-import { FunctionExpressionTree, parseCode } from '@xon/ast';
-import { getExpressionTranslator } from '../expression-helper';
+import { translateExpression } from '../../../translate';
 
 test('function call', () => {
     const code = "on.non (123,'qwe'  )";
-    const tree = parseCode(code, FunctionExpressionTree);
-    const result = getExpressionTranslator(tree).translate();
-    expect(result).toBe("on.non(123, `qwe`)");
+    expect(translateExpression(code)).toBe('on.non(123, `qwe`)');
 });
