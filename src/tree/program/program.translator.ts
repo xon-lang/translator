@@ -53,7 +53,7 @@ export class ProgramTranslator extends BaseTranslator {
             (functions.length ? '\n\n' : '') +
             functions.join('\n\n') +
             (definitions.length ? '\n\n' : '') +
-            definitions.join('\n\n')
+            definitions.join('\n\n').trim()
         );
     }
 }
