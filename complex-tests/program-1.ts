@@ -10,8 +10,8 @@ export function render_plugin() {
 
 export function get_charge_color(p: number) {
     return ((p > 40) &&(`\u001b[32m`)
-        ||(p > 20) &&(`\u001b[33m`)
-        ||(p > 0) &&(`\u001b[31m`))
+            ||(p > 20) &&(`\u001b[33m`)
+            ||(p > 0) &&(`\u001b[31m`))
 }
 
 export function init(battery: any) {
@@ -30,8 +30,8 @@ export class SimpleClass {
 
     method(t: number, v = 4, vt: string = `sff`) {
         if (t + v + vt) {
-        render_plugin()
-    }
+            render_plugin()
+        }
     }
 
     location(x: {z: number, dim: string}, y: number = 6) {

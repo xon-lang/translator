@@ -1,6 +1,6 @@
 import { FunctionTree } from '@xon/ast';
 import { getType } from '../../types';
-import { INDENT_STR } from '../../util/string.util';
+import { indent, INDENT_STR } from '../../util/string.util';
 import { BaseTranslator } from '../base.translator';
 import { getExpressionTranslator } from '../expression/expression-helper';
 import { getStatementTranslator } from '../statement/statement-helper';
@@ -20,8 +20,7 @@ export class FunctionTranslator extends BaseTranslator {
         }
 
         const statements = this.tree.statements
-            .map(getStatementTranslator)
-            .map((x) => `${INDENT_STR}` + x.translate())
+            .map((x) => getStatementTranslator(x).translate())
             .join(`\n`);
 
         let header = `${this.tree.name}(${argumentsArr.join(', ')}) {`;
@@ -31,6 +30,6 @@ export class FunctionTranslator extends BaseTranslator {
             vars = `\n${INDENT_STR}let ${vars};`;
         }
 
-        return `${header}${vars}\n${statements}\n}`;
+        return `${header}${vars}\n${indent(statements)}\n}`;
     }
 }
