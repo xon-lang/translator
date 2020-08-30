@@ -14,7 +14,7 @@ export class IfExpressionTranslator extends ExpressionTranslator {
         const ifCondition = getExpressionTranslator(this.tree.ifCondition).translate();
         const ifStatements = this.tree.ifStatements
             .map(getStatementTranslator)
-            .map(x => x.translate())
+            .map((x) => x.translate())
             .join('\n');
 
         let result = `if (${ifCondition}) {\n${indent(ifStatements)}\n}`;
@@ -27,9 +27,9 @@ export class IfExpressionTranslator extends ExpressionTranslator {
             }
             const elseStatements = this.tree.elseStatements
                 .map(getStatementTranslator)
-                .map(x => x.translate())
+                .map((x) => x.translate())
                 .join('\n');
-            result += `{\n${indent(elseStatements)}\n}`;
+            result += ` {\n${indent(elseStatements)}\n}`;
         }
         return result;
     }
