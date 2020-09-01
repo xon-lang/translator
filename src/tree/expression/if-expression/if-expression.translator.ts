@@ -1,4 +1,4 @@
-import { IfExpressionTree } from '@xon/ast';
+import { IfExpressionTree, ParenthesizedExpressionTree } from '@xon/ast';
 import '../../../util/string.util';
 import { indent } from '../../../util/string.util';
 import { translateStatementsTrees } from '../../statement/statement-helper';
@@ -17,7 +17,11 @@ export class IfExpressionTranslator extends ExpressionTranslator {
                 result += ' else';
             }
             if (item.condition) {
-                const codition = translateExpressionTree(item.condition);
+                const conditionTree =
+                    item.condition instanceof ParenthesizedExpressionTree
+                        ? item.condition.value
+                        : item.condition;
+                const codition = translateExpressionTree(conditionTree);
                 result += ` if (${codition})`;
             }
             const statements = translateStatementsTrees(item.statements);
