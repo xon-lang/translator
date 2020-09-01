@@ -36,7 +36,7 @@
         }
     },
     "devDependencies": {
-        "@types/jest": "^26.0.10",
+        "@types/jest": "^26.0.12",
         "@types/node": "^14.6.2",
         "create-ts-index": "^1.13.5",
         "husky": "^4.2.5",
@@ -46,6 +46,6 @@
         "typescript": "^3.9.7"
     },
     "dependencies": {
-        "@xon/ast": "^1.2.6"
+        "@xon/ast": "^1.2.7"
     }
 }
