@@ -1,5 +1,5 @@
-import { FunctionExpressionTree } from '@xon/ast';
-import { getExpressionTranslator } from '../expression-helper';
+import { FunctionExpressionTree, StringFormatExpressionTree } from '@xon/ast';
+import { getExpressionTranslator, translateExpressionTree } from '../expression-helper';
 import { ExpressionTranslator } from '../expression.translator';
 
 export class FunctionExpressionTranslator extends ExpressionTranslator {
@@ -10,8 +10,8 @@ export class FunctionExpressionTranslator extends ExpressionTranslator {
     translate() {
         const object = getExpressionTranslator(this.tree.object).translate();
         const args = this.tree.args
-            .map(getExpressionTranslator)
-            .map(x => x.translate())
+            .map((x) => (x instanceof StringFormatExpressionTree ? x.value.value : x))
+            .map(translateExpressionTree)
             .join(', ');
         return `${object}(${args})`;
     }

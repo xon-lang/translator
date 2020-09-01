@@ -40,6 +40,7 @@ import {
     UnaryMinusExpressionTree,
     UnaryPlusExpressionTree,
 } from '@xon/ast';
+import { EOL } from '../../util/string.util';
 import { AddExpressionTranslator } from './add-expression/add-expression.translator';
 import { ArrayExpressionTranslator } from './array-expression/array-expression.translator';
 import { BitAndExpressionTranslator } from './bit-and-expression/bit-and-expression.translator';
@@ -142,4 +143,12 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
     }
 
     throw Error('No Expression found for ' + tree.treeType);
+}
+
+export function translateExpressionTree(tree: ExpressionTree): string {
+    return getExpressionTranslator(tree).translate();
+}
+
+export function translateExpressionsTrees(tree: ExpressionTree[]): string {
+    return tree.map((x) => getExpressionTranslator(x).translate()).join(EOL);
 }

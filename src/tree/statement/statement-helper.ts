@@ -1,4 +1,13 @@
-import { AssignmentStatementTree, ExpressionStatementTree, FunctionStatementTree, LineBreakStatementTree, PreprocessorStatementTree, ReturnStatementTree, StatementTree } from '@xon/ast';
+import {
+    AssignmentStatementTree,
+    ExpressionStatementTree,
+    FunctionStatementTree,
+    LineBreakStatementTree,
+    PreprocessorStatementTree,
+    ReturnStatementTree,
+    StatementTree,
+} from '@xon/ast';
+import { EOL } from '../../util/string.util';
 import { AssignmentStatementTranslator } from './assignment-statement/assignment-statement.translator';
 import { ExpressionStatementTranslator } from './expression-statement/expression-statement.translator';
 import { FunctionStatementTranslator } from './function-statement/function-statement.translator';
@@ -16,4 +25,12 @@ export function getStatementTranslator(tree: StatementTree): StatementTranslator
     if (tree instanceof FunctionStatementTree) return new FunctionStatementTranslator(tree);
 
     throw Error('No Statement found for ' + tree.treeType);
+}
+
+export function translateStatementTrees(tree: StatementTree): string {
+    return getStatementTranslator(tree).translate();
+}
+
+export function translateStatementsTrees(tree: StatementTree[]): string {
+    return tree.map((x) => getStatementTranslator(x).translate()).join(EOL);
 }
