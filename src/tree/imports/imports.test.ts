@@ -1,5 +1,3 @@
-// import { parseCode, AddSubExpressionTree } from '@xon/ast';
-
 import { translateProgram } from '../../translate';
 
 test('imports', () => {

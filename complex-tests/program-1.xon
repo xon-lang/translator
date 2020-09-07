@@ -1,4 +1,4 @@
-'@babel/core': BabelFile, BabelFileMetadata
+'@babel/core': BabelFile as BF, BabelFileMetadata
 
 si = require('systeminformation')
 

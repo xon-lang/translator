@@ -1,4 +1,4 @@
-import { BabelFile, BabelFileMetadata } from '@babel/core';
+import { BabelFile as BF, BabelFileMetadata } from '@babel/core';
 
 export let si;
 
