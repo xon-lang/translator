@@ -1,3 +1,5 @@
+import { BabelFile, BabelFileMetadata } from '@babel/core';
+
 export let si;
 
 si = require(`systeminformation`)

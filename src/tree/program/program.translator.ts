@@ -1,6 +1,8 @@
 import { ProgramTree } from '@xon/ast';
+import { EOL, EOL2 } from '../../util/string.util';
 import { BaseTranslator } from '../base.translator';
 import { DefinitionTranslator } from '../definition/definition.translator';
+import { ImportsTranslator } from '../imports/imports.translator';
 import { FunctionStatementTranslator } from '../statement/function-statement/function-statement.translator';
 import { getStatementTranslator } from '../statement/statement-helper';
 
@@ -10,7 +12,7 @@ export class ProgramTranslator extends BaseTranslator {
     }
 
     translate() {
-        if (!this.tree.statements.length || !this.tree.statements.length) return '';
+        const imports = this.tree.imports.map((x) => new ImportsTranslator(x).translate());
 
         this.scopes.push([]);
 
@@ -25,35 +27,18 @@ export class ProgramTranslator extends BaseTranslator {
             }
         }
 
-        const definitions = this.tree.definitions
+        let definitions = this.tree.definitions
             .map((x) => new DefinitionTranslator(x))
             .map((x) => x.translate());
 
-        let vars = '';
-        let export_vars = [];
-        let private_vars = [];
-        for (const v of this.scopes.pop()) {
-            if (v.startsWith('_')) {
-                private_vars.push(v);
-            } else {
-                export_vars.push(v);
-            }
-        }
-        if (export_vars.length) {
-            vars += `export let ${export_vars.join(', ')};\n`;
-        }
-        if (private_vars.length) {
-            vars += `let ${private_vars.join(', ')};`;
-        }
+        let vars = this.scopes.pop().map((x) => `${x.startsWith('_') ? '' : 'export '}let ${x};`);
 
-        return (
-            vars +
-            (statements.length ? '\n' : '') +
-            statements.join('\n') +
-            (functions.length ? '\n\n' : '') +
-            functions.join('\n\n') +
-            (definitions.length ? '\n\n' : '') +
-            definitions.join('\n\n')
-        ).trim();
+        let result = imports.join(EOL);
+        result = result.trim() + EOL2 + vars.join(EOL);
+        result = result.trim() + EOL2 + statements.join(EOL);
+        result = result.trim() + EOL2 + functions.join(EOL2);
+        result = result.trim() + EOL2 + definitions.join(EOL2);
+
+        return result.trim();
     }
 }

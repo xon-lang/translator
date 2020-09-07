@@ -1,4 +1,5 @@
 export const EOL = '\n';
+export const EOL2 = EOL+EOL;
 export const INDENT_STR = '    ';
 
 export function indent(s: string) {

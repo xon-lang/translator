@@ -1,3 +1,5 @@
+'@babel/core': BabelFile, BabelFileMetadata
+
 si = require('systeminformation')
 
 render_plugin()
