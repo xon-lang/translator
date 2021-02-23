@@ -3,7 +3,6 @@ import { DefinitionTranslator } from './tree/definition/definition.translator';
 import { getExpressionTranslator } from './tree/expression/expression-helper';
 import { ProgramTranslator } from './tree/program/program.translator';
 import { getStatementTranslator } from './tree/statement/statement-helper';
-import { ImportsTranslator } from './tree/imports/imports.translator';
 
 export function translateExpression(xonCode: string) {
     const tree = parseExpression(xonCode);

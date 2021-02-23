@@ -1,6 +1,6 @@
 import { translateExpression } from '../../../translate';
 
-test('one minus one', () => {
-    const code = '1-1';
-    expect(translateExpression(code)).toBe('1 - 1');
+test('integer literal', () => {
+    const code = '5';
+    expect(translateExpression(code)).toBe('5');
 });

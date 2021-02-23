@@ -7,6 +7,6 @@ export class InstanceMemberExpressionTranslator extends ExpressionTranslator {
     }
 
     translate() {
-        return `this.${this.tree.memberName}`;
+        return `this.${this.tree.name}`;
     }
 }

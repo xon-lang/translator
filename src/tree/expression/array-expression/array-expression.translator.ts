@@ -8,9 +8,7 @@ export class ArrayExpressionTranslator extends ExpressionTranslator {
     }
 
     translate() {
-        const itemsTr = this.tree.items.map(
-            (x) => `${x.hasSpread ? '...' : ''}` + getExpressionTranslator(x.value).translate()
-        );
+        const itemsTr = this.tree.items.map((x) => getExpressionTranslator(x).translate());
         return `[${itemsTr.join(', ')}]`;
     }
 }
