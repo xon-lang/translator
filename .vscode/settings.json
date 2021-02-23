@@ -1,5 +1,4 @@
 {
-    "git.postCommitCommand": "sync",
     "workbench.colorCustomizations": {
         "statusBar.background": "#4d4086"
     },
