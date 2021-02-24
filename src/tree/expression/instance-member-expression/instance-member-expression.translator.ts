@@ -10,4 +10,3 @@ export class InstanceMemberExpressionTranslator extends ExpressionTranslator {
         return `this.${this.tree.name}`;
     }
 }
- 
