@@ -28,12 +28,10 @@
         "pre-commit": "scripts/pre-commit.sh",
         "preversion": "npm run test",
         "version": "npm run build",
-        "postversion": "git push && cd dist && npm publish --access public && rimraf ../dist"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm run pre-commit"
-        }
+        "postversion": "git push && cd dist && npm publish --access public && rimraf ../dist",
+        "postinstall": "husky install",
+        "prepublishOnly": "pinst --disable",
+        "postpublish": "pinst --enable"
     },
     "devDependencies": {
         "@types/jest": "^26.0.20",
