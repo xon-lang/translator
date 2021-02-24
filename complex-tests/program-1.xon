@@ -1,32 +1,34 @@
-// babel/core: BabelFile as BF, BabelFileMetadata
+babel/core: BabelFile as BF, BabelFileMetadata
 
-// si = require("systeminformation")
+si = require("systeminformation")
 
-// render_plugin()
+render_plugin()
 
-// render_plugin():
-//     si = 8
-//     then(init)
+Util:
+    render_plugin():
+        // si = 8
+        then(init)
 
-// init(battery Any):
-//     // chargeIcon = battery.ischarging && "⚡" || ""
-//     color = get_charge_color(percent)
-//     console.log("{color}{chargeIcon}{percent}% | size=13")
-//     console.log("---")
-//     console.log("Refresh|refresh=true")
+    init(battery Any):
+        // chargeIcon = battery.ischarging && "⚡" || ""
+        color = get_charge_color(percent)
+        console.log("{color}{chargeIcon}{percent}% | size=13")
+        console.log("---")
+        console.log("Refresh|refresh=true")
 
 
-// SimpleClass:
-//     _prop Integer
-//     tryped Number
-//     only_typed String
+SimpleClass:
+    _prop Integer
+    tryped Number
+    only_typed String
 
-//     method(t Number, v Integer, vt String):
-//         // if t+v+vt:
-//         render_plugin()
+    method(t Number, v Integer, vt String):
+        // if t+v+vt:
+        render_plugin()
 
-//     location(x Complex, y Number): ._coord(x.z, y)
+    location(x Complex, y Number):
+        @_coord(x.z, y)
 
-//     _coord(x Number, y Number):
-//         console.log(1)
-//         console.log(222)
+    _coord(x Number, y Number):
+        console.log(1)
+        console.log(222)
