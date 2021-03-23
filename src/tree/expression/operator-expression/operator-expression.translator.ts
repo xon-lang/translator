@@ -1,9 +1,9 @@
-import { InfixExpressionTree } from '@xon/ast';
+import { OperatorExpressionTree } from '@xon/ast';
 import { getExpressionTranslator } from '../expression-helper';
 import { ExpressionTranslator } from '../expression.translator';
 
-export class InfixExpressionTranslator extends ExpressionTranslator {
-    constructor(public tree: InfixExpressionTree) {
+export class OperatorExpressionTranslator extends ExpressionTranslator {
+    constructor(public tree: OperatorExpressionTree) {
         super();
     }
 
