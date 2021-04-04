@@ -1,0 +1,13 @@
+JSON:
+
+    (object Object)
+
+    from(o Object)
+
+    to: String()
+
+    to: Number()
+
+
+o | JSON | String
+o | JSON | User

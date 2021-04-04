@@ -1,10 +1,14 @@
-import { TypeTree } from '@xon/ast';
+import { PlainTypeTree, TypeTree } from '@xon/ast';
 
 export function getType(type: TypeTree) {
-    if (type.name == 'Number') return 'number';
-    if (type.name == 'String') return 'string';
-    if (type.name == 'Boolean') return 'boolean';
-    if (type.name == 'Any') return 'any';
+    if (type === undefined) return 'void';
 
-    return type.name;
+    if (type instanceof PlainTypeTree) {
+        if (type.name == 'Number') return 'number';
+        if (type.name == 'Integer') return 'number';
+        if (type.name == 'Float') return 'number';
+        if (type.name == 'String') return 'string';
+        if (type.name == 'Boolean') return 'boolean';
+    }
+    return 'any';
 }

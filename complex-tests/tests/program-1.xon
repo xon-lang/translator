@@ -1,0 +1,13 @@
+SimpleClass:
+    x Number
+    y Number
+    _prop Integer
+
+    method(t Number, v Integer, vt String):
+        @.location(t, v)
+
+    location(a Complex, b Number):
+        @._coordinate(a, b)
+
+    _coordinate(x Number, y Number):
+        2+2

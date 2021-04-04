@@ -1,15 +1,15 @@
-import { FunctionExpressionTree } from '@xon/ast';
+import { MethodExpressionTree } from '@xon/ast';
 import { getExpressionTranslator, translateExpressionTree } from '../expression-helper';
 import { ExpressionTranslator } from '../expression.translator';
 
-export class FunctionExpressionTranslator extends ExpressionTranslator {
-    constructor(public tree: FunctionExpressionTree) {
+export class MethodExpressionTranslator extends ExpressionTranslator {
+    constructor(public tree: MethodExpressionTree) {
         super();
     }
 
     translate() {
         const object = getExpressionTranslator(this.tree.object).translate();
-        const args = this.tree.args
+        const args = this.tree.arguments
             .map((x) => x.value)
             .map(translateExpressionTree)
             .join(', ');

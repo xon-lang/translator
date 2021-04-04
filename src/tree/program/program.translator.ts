@@ -21,9 +21,7 @@ export class ProgramTranslator extends BaseTranslator {
             statements.push(stmt.translate());
         }
 
-        let definitions = this.tree.definitions
-            .map((x) => new DefinitionTranslator(x))
-            .map((x) => x.translate());
+        let definitions = this.tree.definitions.map((x) => new DefinitionTranslator(x).translate());
 
         let vars = this.scopes.pop().map((x) => `${x.startsWith('_') ? '' : 'export '}let ${x};`);
 
