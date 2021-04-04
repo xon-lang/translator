@@ -1,6 +1,6 @@
 import { translateExpression } from '../../../translate';
 
 test('member', () => {
-    const code = 'smth.Anth';
-    expect(translateExpression(code)).toBe('smth.Anth');
+    const code = 'o.prop';
+    expect(translateExpression(code)).toBe('o.prop');
 });

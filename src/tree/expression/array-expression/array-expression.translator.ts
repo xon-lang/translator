@@ -8,8 +8,8 @@ export class ArrayExpressionTranslator extends ExpressionTranslator {
     }
 
     translate() {
-        const itemsTr = this.tree.items.map(
-            (x) => `${x.hasSpread ? '...' : ''}` + getExpressionTranslator(x.value).translate()
+        const itemsTr = this.tree.arguments.map((x) =>
+            getExpressionTranslator(x.value).translate()
         );
         return `[${itemsTr.join(', ')}]`;
     }

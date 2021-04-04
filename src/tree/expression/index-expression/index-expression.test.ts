@@ -1,7 +1,7 @@
 import { translateExpression } from '../../../translate';
 
 test('index', () => {
-    const code = 'some.prop[1+1]';
+    const code = 'prop[5]';
     const result = translateExpression(code);
-    expect(result).toBe('some.prop[1 + 1]');
+    expect(result).toBe('prop[5]');
 });

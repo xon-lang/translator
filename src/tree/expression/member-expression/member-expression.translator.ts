@@ -9,6 +9,6 @@ export class MemberExpressionTranslator extends ExpressionTranslator {
 
     translate() {
         const object = getExpressionTranslator(this.tree.object).translate();
-        return `${object}.${this.tree.memberName}`;
+        return `${object}.${this.tree.name}`;
     }
 }

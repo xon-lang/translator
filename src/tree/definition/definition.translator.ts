@@ -1,9 +1,9 @@
-import { DefinitionTree } from '@xon/ast';
+import { DefinitionTree, FunctionTypeTree } from '@xon/ast';
 import { getType } from '../../types';
-import { indent, INDENT_STR } from '../../util/string.util';
+import { indent } from '../../util/string.util';
 import { BaseTranslator } from '../base.translator';
-import { getExpressionTranslator } from '../expression/expression-helper';
-import { FunctionTranslator } from '../function/function.translator';
+import { getStatementTranslator } from '../statement/statement-helper';
+// import { FunctionTranslator } from '../function/function.translator';
 
 export class DefinitionTranslator extends BaseTranslator {
     constructor(public tree: DefinitionTree) {
@@ -11,22 +11,31 @@ export class DefinitionTranslator extends BaseTranslator {
     }
 
     translate() {
-        let header = `${this.tree.name.startsWith('_') ? '' : 'export '}class ${this.tree.name} {`;
+        this.tree.body();
 
-        let properties = [];
+        let header = `export class ${this.tree.name} {`;
+
+        let properties: string[] = [];
         for (const prop of this.tree.properties) {
-            const name = prop.name.startsWith('_') ? `private ${prop.name}` : prop.name;
-            const type = prop.type ? ': ' + getType(prop.type) : '';
-            const value = prop.value ? ` = ${getExpressionTranslator(prop.value).translate()}` : '';
-            properties.push(`${INDENT_STR}${name}${type}${value};`);
+            const name = (prop.isPrivate ? 'private ' : 'public ') + prop.name;
+            const type = prop.getType() ? ': ' + getType(prop.getType()) : '';
+            properties.push(indent(`${name}${type};`));
         }
 
-        let methods = [];
+        let methods: string[] = [];
         for (const method of this.tree.methods) {
-            const private_tr = method.name.startsWith('_') ? `private ` : '';
-            methods.push(indent(`${private_tr}` + new FunctionTranslator(method).translate()));
+            const name = (method.isPrivate ? 'private ' : 'public ') + method.name;
+            const parameters = method.parameters
+                .map((x) => `${x.name}:${getType(x.getType())}`)
+                .join(', ');
+            const returnType = getType((method.getType() as FunctionTypeTree).returnType);
+            const body = method
+                .body()
+                .map((x) => getStatementTranslator(x).translate())
+                .join('\n');
+            methods.push(indent(`${name}(${parameters}): ${returnType} {\n${indent(body)}\n}`));
         }
 
-        return `${header}\n${properties.join('\n')}\n\n${methods.join('\n\n')}\n}`;
+        return `${header}\n${[...properties, ...methods].join('\n\n')}\n}`;
     }
 }

@@ -2,8 +2,7 @@ import { ProgramTree } from '@xon/ast';
 import { EOL, EOL2 } from '../../util/string.util';
 import { BaseTranslator } from '../base.translator';
 import { DefinitionTranslator } from '../definition/definition.translator';
-import { ImportsTranslator } from '../imports/imports.translator';
-import { FunctionStatementTranslator } from '../statement/function-statement/function-statement.translator';
+import { LibraryTranslator } from '../library/library.translator';
 import { getStatementTranslator } from '../statement/statement-helper';
 
 export class ProgramTranslator extends BaseTranslator {
@@ -12,28 +11,21 @@ export class ProgramTranslator extends BaseTranslator {
     }
 
     translate() {
-        const imports = this.tree.imports.map((x) => new ImportsTranslator(x).translate());
+        const libraries = this.tree.libraries.map((x) => new LibraryTranslator(x).translate());
 
         this.scopes.push([]);
 
         let statements = [];
         let functions = [];
         for (const stmt of this.tree.statements.map(getStatementTranslator)) {
-            if (stmt instanceof FunctionStatementTranslator) {
-                const exportOp = stmt.tree.value.name.startsWith('_') ? `` : 'export ';
-                functions.push(`${exportOp}` + stmt.translate());
-            } else {
-                statements.push(stmt.translate());
-            }
+            statements.push(stmt.translate());
         }
 
-        let definitions = this.tree.definitions
-            .map((x) => new DefinitionTranslator(x))
-            .map((x) => x.translate());
+        let definitions = this.tree.definitions.map((x) => new DefinitionTranslator(x).translate());
 
         let vars = this.scopes.pop().map((x) => `${x.startsWith('_') ? '' : 'export '}let ${x};`);
 
-        let result = imports.join(EOL);
+        let result = libraries.join(EOL);
         result = result.trim() + EOL2 + vars.join(EOL);
         result = result.trim() + EOL2 + statements.join(EOL);
         result = result.trim() + EOL2 + functions.join(EOL2);

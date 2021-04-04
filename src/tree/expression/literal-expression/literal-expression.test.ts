@@ -11,7 +11,7 @@ test('float literal', () => {
 });
 
 test('string literal', () => {
-    const code = "'string literal'";
+    const code = '"string literal"';
     expect(translateExpression(code)).toBe('`string literal`');
 });
 
