@@ -10,7 +10,6 @@ import {
     MethodExpressionTree,
     OperatorExpressionTree,
     ParenthesizedExpressionTree,
-    StringFormatExpressionTree,
 } from '@xon/ast';
 import { EOL } from '../../util/string.util';
 import { ArrayExpressionTranslator } from './array-expression/array-expression.translator';
@@ -24,7 +23,6 @@ import { MemberExpressionTranslator } from './member-expression/member-expressio
 import { MethodExpressionTranslator } from './method-expression/method-expression.translator';
 import { OperatorExpressionTranslator } from './operator-expression/operator-expression.translator';
 import { ParenthesizedExpressionTranslator } from './parenthesized-expression/parenthesized-expression.translator';
-import { StringFormatExpressionTranslator } from './string-format-expression/string-format-expression.translator';
 
 export function getExpressionTranslator(tree: ExpressionTree): ExpressionTranslator {
     if (tree === undefined) return undefined;
@@ -33,8 +31,6 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
         return new ParenthesizedExpressionTranslator(tree);
     if (tree instanceof IdExpressionTree) return new IdExpressionTranslator(tree);
     if (tree instanceof LiteralExpressionTree) return new LiteralExpressionTranslator(tree);
-    if (tree instanceof StringFormatExpressionTree)
-        return new StringFormatExpressionTranslator(tree);
     if (tree instanceof ArrayExpressionTree) return new ArrayExpressionTranslator(tree);
     if (tree instanceof IndexExpressionTree) return new IndexExpressionTranslator(tree);
     if (tree instanceof LambdaExpressionTree) return new LambdaExpressionTranslator(tree);
