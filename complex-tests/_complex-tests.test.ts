@@ -1,14 +1,12 @@
 import { IssueService, NamingService } from '@xon/ast';
 import * as fs from 'fs';
-import * as path from 'path';
+import { glob } from 'glob';
 import { translateProgram } from '../src/translate';
 
-const complexTestsDir = path.resolve(__dirname, '../complex-tests/tests');
-
-fs.readdirSync(complexTestsDir).forEach((filePath) => {
+glob.sync('complex-tests/tests/**/*.xon').forEach((filePath) => {
     if (!filePath.endsWith('.xon')) return;
     const name = filePath.replace(/\.[^/.]+$/, '');
-    test(name, testExactFile(path.resolve(complexTestsDir, filePath)));
+    test(name, testExactFile(filePath));
 });
 
 function testExactFile(inputFilePath: string) {
