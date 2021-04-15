@@ -7,7 +7,7 @@ export abstract class BaseTranslator {
     get scopes() {
         return BaseTranslator.scopes;
     }
-    get currentSope() {
+    get currentScope() {
         return BaseTranslator.scopes[BaseTranslator.scopes.length - 1];
     }
 

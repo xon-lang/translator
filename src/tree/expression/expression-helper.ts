@@ -11,7 +11,7 @@ import {
     OperatorExpressionTree,
     ParenthesizedExpressionTree,
 } from '@xon/ast';
-import { EOL } from '../../util/string.util';
+import { NL } from '../../util/string.util';
 import { ArrayExpressionTranslator } from './array-expression/array-expression.translator';
 import { ExpressionTranslator } from './expression.translator';
 import { IdExpressionTranslator } from './id-expression/id-expression.translator';
@@ -47,5 +47,5 @@ export function translateExpressionTree(tree: ExpressionTree): string {
 }
 
 export function translateExpressionsTrees(tree: ExpressionTree[]): string {
-    return tree.map((x) => getExpressionTranslator(x).translate()).join(EOL);
+    return tree.map((x) => getExpressionTranslator(x).translate()).join(NL);
 }

@@ -1,5 +1,5 @@
 import { ProgramTree } from '@xon/ast';
-import { EOL, EOL2 } from '../../util/string.util';
+import { NL, NL2 } from '../../util/string.util';
 import { BaseTranslator } from '../base.translator';
 import { DefinitionTranslator } from '../definition/definition.translator';
 import { LibraryTranslator } from '../library/library.translator';
@@ -13,24 +13,15 @@ export class ProgramTranslator extends BaseTranslator {
     translate() {
         const libraries = this.tree.libraries.map((x) => new LibraryTranslator(x).translate());
 
-        this.scopes.push([]);
+        const statements = this.tree.statements.map((x) => getStatementTranslator(x).translate());
 
-        let statements = [];
-        let functions = [];
-        for (const stmt of this.tree.statements.map(getStatementTranslator)) {
-            statements.push(stmt.translate());
-        }
+        const definitions = this.tree.definitions.map((x) =>
+            new DefinitionTranslator(x).translate()
+        );
 
-        let definitions = this.tree.definitions.map((x) => new DefinitionTranslator(x).translate());
-
-        let vars = this.scopes.pop().map((x) => `${x.startsWith('_') ? '' : 'export '}let ${x};`);
-
-        let result = libraries.join(EOL);
-        result = result.trim() + EOL2 + vars.join(EOL);
-        result = result.trim() + EOL2 + statements.join(EOL);
-        result = result.trim() + EOL2 + functions.join(EOL2);
-        result = result.trim() + EOL2 + definitions.join(EOL2);
-
-        return result.trim();
+        return [libraries, statements, definitions]
+            .map((x) => x.join(NL))
+            .filter((x) => x)
+            .join(NL2);
     }
 }

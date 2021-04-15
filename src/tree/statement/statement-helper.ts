@@ -5,7 +5,7 @@ import {
     ReturnStatementTree,
     StatementTree,
 } from '@xon/ast';
-import { EOL } from '../../util/string.util';
+import { NL } from '../../util/string.util';
 import { AssignmentStatementTranslator } from './assignment-statement/assignment-statement.translator';
 import { ExpressionStatementTranslator } from './expression-statement/expression-statement.translator';
 import { PreprocessorStatementTranslator } from './preprocessor-statement/preprocessor-statement.translator';
@@ -26,5 +26,5 @@ export function translateStatementTrees(tree: StatementTree): string {
 }
 
 export function translateStatementsTrees(tree: StatementTree[]): string {
-    return tree.map((x) => getStatementTranslator(x).translate()).join(EOL);
+    return tree.map((x) => getStatementTranslator(x).translate()).join(NL);
 }

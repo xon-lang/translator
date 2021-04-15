@@ -1,8 +1,15 @@
-// import { parseCode, AddSubExpressionTree } from '@xon/ast';
+import { parseDefinition } from '@xon/ast';
+import { DefinitionTranslator } from './definition.translator';
 
-test('one_plus_one', () => {
-    const code = '1 + 1';
-    // const tree = parseCode(code, AddSubExpressionTree);
-    // const result = getExpressionTranslator(tree).translate();
-    expect(code).toBe('1 + 1');
+test('empty body', () => {
+    const code = 'Animal:\n    weight Integer';
+    const tree = parseDefinition(code);
+    const result = new DefinitionTranslator(tree).translate();
+    expect(result).toBe(
+        `
+export class Animal {
+    public weight: any
+}
+`.trim()
+    );
 });
