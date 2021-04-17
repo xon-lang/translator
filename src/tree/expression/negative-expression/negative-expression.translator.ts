@@ -9,6 +9,6 @@ export class NegativeExpressionTranslator extends ExpressionTranslator {
 
     translate() {
         const value = getExpressionTranslator(this.tree.value).translate();
-        return `!${value}`;
+        return `-${value}`;
     }
 }
