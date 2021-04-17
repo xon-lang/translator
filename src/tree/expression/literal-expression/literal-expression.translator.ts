@@ -8,7 +8,7 @@ export class LiteralExpressionTranslator extends ExpressionTranslator {
 
     translate() {
         if (this.tree.literal instanceof StringLiteralTree) {
-            return `\`${this.tree.literal.value}\``;
+            return `"${this.tree.literal.value}"`;
         }
         return this.tree.literal.value.toString();
     }
