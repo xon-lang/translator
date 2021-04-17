@@ -1,4 +1,4 @@
-import { LiteralExpressionTree, StringLiteralTree } from '@xon/ast';
+import { LiteralExpressionTree, NullLiteralTree, StringLiteralTree } from '@xon/ast';
 import { ExpressionTranslator } from '../expression.translator';
 
 export class LiteralExpressionTranslator extends ExpressionTranslator {
@@ -7,9 +7,8 @@ export class LiteralExpressionTranslator extends ExpressionTranslator {
     }
 
     translate() {
-        if (this.tree.literal instanceof StringLiteralTree) {
-            return `"${this.tree.literal.value}"`;
-        }
+        if (this.tree.literal instanceof StringLiteralTree) return `"${this.tree.literal.value}"`;
+        if (this.tree.literal instanceof NullLiteralTree) return 'null';
         return this.tree.literal.value.toString();
     }
 }

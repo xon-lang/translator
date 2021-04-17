@@ -8,6 +8,6 @@ export class ExpressionStatementTranslator extends StatementTranslator {
     }
 
     translate() {
-        return getExpressionTranslator(this.tree.value).translate();
+        return getExpressionTranslator(this.tree.value).translate() + ';';
     }
 }

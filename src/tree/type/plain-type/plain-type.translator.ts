@@ -8,7 +8,7 @@ export class PlainTypeTranslator extends TypeTranslator {
     }
 
     translate() {
-        const generics = translateTypesTrees(this.tree.generics);
+        const generics = translateTypesTrees(this.tree.generics).join(', ');
         if (generics) return `${this.tree.name}<${generics}>`;
         return `${this.tree.name}`;
     }

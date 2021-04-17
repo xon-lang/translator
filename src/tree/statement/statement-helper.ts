@@ -13,12 +13,14 @@ import { ReturnStatementTranslator } from './return-statement/return-statement.t
 import { StatementTranslator } from './statement.translator';
 
 export function getStatementTranslator(tree: StatementTree): StatementTranslator {
+    if (tree === undefined) return undefined;
+
     if (tree instanceof AssignmentStatementTree) return new AssignmentStatementTranslator(tree);
     if (tree instanceof ExpressionStatementTree) return new ExpressionStatementTranslator(tree);
     if (tree instanceof PreprocessorStatementTree) return new PreprocessorStatementTranslator(tree);
     if (tree instanceof ReturnStatementTree) return new ReturnStatementTranslator(tree);
 
-    throw Error('No Statement found');
+    throw Error(`Statement translator not found for "${this.constructor.name}"`);
 }
 
 export function translateStatementTrees(tree: StatementTree): string {

@@ -9,6 +9,6 @@ export class AssignmentStatementTranslator extends StatementTranslator {
 
     translate() {
         const value = getExpressionTranslator(this.tree.value).translate();
-        return `${this.tree.name} = ${value}`;
+        return `${this.tree.name} = ${value};`;
     }
 }

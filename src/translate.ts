@@ -1,8 +1,20 @@
-import { parseDefinition, parseExpression, parseProgram, parseStatement } from '@xon/ast';
+import {
+    parseDefinition,
+    parseExpression,
+    parseProgram,
+    parseStatement,
+    parseType,
+} from '@xon/ast';
 import { DefinitionTranslator } from './tree/definition/definition.translator';
 import { getExpressionTranslator } from './tree/expression/expression-helper';
 import { ProgramTranslator } from './tree/program/program.translator';
 import { getStatementTranslator } from './tree/statement/statement-helper';
+import { translateTypeTree } from './tree/type/type-helper';
+
+export function translateType(code: string) {
+    const tree = parseType(code);
+    return translateTypeTree(tree);
+}
 
 export function translateExpression(code: string) {
     const tree = parseExpression(code);

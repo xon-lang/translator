@@ -12,8 +12,8 @@ export class ReturnStatementTranslator extends StatementTranslator {
     translate() {
         if (this.tree.value) {
             const value = getExpressionTranslator(this.tree.value).translate();
-            return `return ${indentSkipFirst(value)}`;
+            return `return ${indentSkipFirst(value)};`;
         }
-        return 'return';
+        return 'return;';
     }
 }
