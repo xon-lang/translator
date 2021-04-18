@@ -8,7 +8,7 @@ test('empty body', () => {
     expect(result).toBe(
         `
 export class Animal {
-    public weight: Integer
+    public weight: number
 }
 `.trim()
     );

@@ -7,7 +7,7 @@ export class LiteralTypeTranslator extends TypeTranslator {
     }
 
     translate() {
-        if (this.tree instanceof LiteralTypeTree && this.tree.value === null) return 'void';
+        if (this.tree.value === null) return 'void';
         return `${this.tree.toString()}`;
     }
 }

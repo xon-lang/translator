@@ -7,5 +7,5 @@ test('has similar plain types', () => {
 
 test('has different types', () => {
     const code = 'Boolean | 3 | "Oak"';
-    expect(translateType(code)).toBe('Boolean | 3 | "Oak"');
+    expect(translateType(code)).toBe('boolean | 3 | "Oak"');
 });

@@ -7,5 +7,5 @@ test('has no generics', () => {
 
 test('has generics', () => {
     const code = 'Animal<Integer>';
-    expect(translateType(code)).toBe('Animal<Integer>');
+    expect(translateType(code)).toBe('Animal<number>');
 });

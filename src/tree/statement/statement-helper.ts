@@ -30,5 +30,5 @@ export function translateStatementTree(tree: StatementTree): string {
 }
 
 export function translateStatementsTrees(tree: StatementTree[]): string[] {
-    return tree.map(translateStatementTree);
+    return tree?.map(translateStatementTree) || [];
 }

@@ -2,7 +2,7 @@ import { translateType } from '../../../translate';
 
 test('has integer type', () => {
     const code = 'Integer?';
-    expect(translateType(code)).toBe('Integer?');
+    expect(translateType(code)).toBe('number?');
 });
 
 test('has integer literal type', () => {

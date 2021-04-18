@@ -1,19 +1,19 @@
 export class SimpleClass {
-    public x: Number
+    public x: number
 
-    public y: Number
+    public y: number
 
-    private _prop: Integer
+    private _prop: number
 
-    public method(t: Number, v: Integer, vt: String): void {
+    public method(t: number, v: number, vt: string): void {
         this.location(t, v);
     }
 
-    public location(a: Complex, b: Number): void {
+    public location(a: Complex, b: number): void {
         this._coordinate(a, b);
     }
 
-    private _coordinate(x: Number, y: Number): void {
+    private _coordinate(x: number, y: number): void {
         2 + 2;
     }
 }

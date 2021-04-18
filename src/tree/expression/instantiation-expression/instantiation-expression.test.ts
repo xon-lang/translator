@@ -2,7 +2,7 @@ import { translateExpression } from '../../../translate';
 
 test('has generics', () => {
     const code = 'Animal<String>("meow")';
-    expect(translateExpression(code)).toBe('new Animal<String>("meow")');
+    expect(translateExpression(code)).toBe('new Animal<string>("meow")');
 });
 
 test('has no generics', () => {
