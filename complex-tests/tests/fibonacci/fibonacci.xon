@@ -1,4 +1,3 @@
-Fibonacci(n Integer):
-    get() Integer:
-        if @.n<=1: return @.n
-        return @.get(@.n-1) + @.get (@.n-2)
+fibonacci(n Integer) Integer:
+    if n <= 1: return n
+    return fibonacci(n-1) + fibonacci(n-2)

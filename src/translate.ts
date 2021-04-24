@@ -3,6 +3,7 @@ import {
     parseExpression,
     parseParameter,
     parseProgram,
+    parseProgramFromFile,
     parseStatement,
     parseType,
 } from '@xon/ast';
@@ -40,5 +41,10 @@ export function translateDefinition(code: string) {
 
 export function translateProgram(code: string) {
     const tree = parseProgram(code);
+    return new ProgramTranslator(tree).translate();
+}
+
+export function translateProgramFromFile(filePath: string) {
+    const tree = parseProgramFromFile(filePath);
     return new ProgramTranslator(tree).translate();
 }

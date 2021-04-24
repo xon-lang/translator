@@ -7,7 +7,7 @@ test('has single statement', () => {
     const result = new FunctionTranslator(tree).translate();
     expect(result).toBe(
         `
-public sum(a: number, b: number): number {
+export function sum(a: number, b: number): number {
     return a + b;
 }
 `.trim()

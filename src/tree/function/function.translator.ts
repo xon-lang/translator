@@ -12,7 +12,7 @@ export class FunctionTranslator extends BaseTranslator {
     }
 
     translate() {
-        const modifier = this.tree.isPrivate ? 'private' : 'public';
+        const modifier = this.tree.isPrivate ? '' : 'export ';
         const generics = this.tree.declaredGenerics.length
             ? '<' + this.tree.declaredGenerics.join(', ') + '>'
             : '';
@@ -20,8 +20,8 @@ export class FunctionTranslator extends BaseTranslator {
         const returnType = getTypeTranslator(this.tree.returnType).translate();
         const body = translateStatementsTrees(this.tree.body).join('\n');
 
-        return `${modifier} ${this.tree.name}${generics}(${parameters}): ${returnType}${braceIndent(
-            body
-        )}`;
+        return `${modifier}function ${
+            this.tree.name
+        }${generics}(${parameters}): ${returnType}${braceIndent(body)}`;
     }
 }

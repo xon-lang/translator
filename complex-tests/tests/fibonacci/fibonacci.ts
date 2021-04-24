@@ -1,10 +1,6 @@
-export class Fibonacci {
-    public n: number
-
-    public get(): number {
-        if (this.n < 1 || this.n == 1) {
-            return this.n;
-        }
-        return this.get(this.n - 1) + this.get(this.n - 2);
+export function fibonacci(n: number): number {
+    if (n < 1 || n == 1) {
+        return n;
     }
+    return fibonacci(n - 1) + fibonacci(n - 2);
 }
