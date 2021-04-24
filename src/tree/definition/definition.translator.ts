@@ -42,7 +42,7 @@ export class DefinitionTranslator extends BaseTranslator {
                 ? '<' + x.declaredGenerics.join(', ') + '>'
                 : '';
             const parameters = translateParametersTrees(x.parameters).join(', ');
-            const returnType = getTypeTranslator(x.returnType)?.translate() || 'void';
+            const returnType = getTypeTranslator(x.returnType).translate();
             const body = translateStatementsTrees(x.body).join('\n');
 
             return `${modifier} ${x.name}${generics}(${parameters}): ${returnType}${braceIndent(
