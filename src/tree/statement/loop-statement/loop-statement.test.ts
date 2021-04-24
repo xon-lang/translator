@@ -1,13 +1,13 @@
 import { translateStatement } from '../../../translate';
 
-test('has value and index keys', () => {
+test('has body', () => {
     const code = `
-for v, i in [1, 2, 3]:
+loop:
     log(2)
 `.trim();
     expect(translateStatement(code)).toBe(
         `
-for ([v, i] [1, 2, 3].entries()) {
+while (true) {
     log(2);
 }
 `.trim()
