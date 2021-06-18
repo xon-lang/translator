@@ -4,10 +4,10 @@ SimpleClass:
     _prop Integer
 
     method(t Number, v Integer, vt String) null:
-        @.location(t, v)
+        this.location(t, v)
 
     location(a Complex, b Number) null:
-        @._coordinate(a, b)
+        this._coordinate(a, b)
 
     _coordinate(x Number, y Number) null:
         2+2

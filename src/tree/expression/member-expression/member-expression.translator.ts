@@ -8,7 +8,7 @@ export class MemberExpressionTranslator extends ExpressionTranslator {
     }
 
     translate() {
-        const object = getExpressionTranslator(this.tree.object).translate();
+        const object = getExpressionTranslator(this.tree.instance).translate();
         return `${object}.${this.tree.name}`;
     }
 }

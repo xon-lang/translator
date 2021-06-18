@@ -1,16 +1,16 @@
 import {
     parseDefinition,
     parseExpression,
+    parseModule,
+    parseModuleFromFile,
     parseParameter,
-    parseProgram,
-    parseProgramFromFile,
     parseStatement,
     parseType,
 } from '@xon/ast';
 import { DefinitionTranslator } from './tree/definition/definition.translator';
 import { translateExpressionTree } from './tree/expression/expression-helper';
 import { translateParameterTree } from './tree/parameter/parameter-helper';
-import { ProgramTranslator } from './tree/program/program.translator';
+import { ModuleTranslator } from './tree/module/module.translator';
 import { translateStatementTree } from './tree/statement/statement-helper';
 import { translateTypeTree } from './tree/type/type-helper';
 
@@ -39,12 +39,12 @@ export function translateDefinition(code: string) {
     return new DefinitionTranslator(tree).translate();
 }
 
-export function translateProgram(code: string) {
-    const tree = parseProgram(code);
-    return new ProgramTranslator(tree).translate();
+export function translateModule(code: string) {
+    const tree = parseModule(code);
+    return new ModuleTranslator(tree).translate();
 }
 
-export function translateProgramFromFile(filePath: string) {
-    const tree = parseProgramFromFile(filePath);
-    return new ProgramTranslator(tree).translate();
+export function translateModuleFromFile(filePath: string) {
+    const tree = parseModuleFromFile(filePath);
+    return new ModuleTranslator(tree).translate();
 }

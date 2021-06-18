@@ -8,7 +8,7 @@ export class IndexExpressionTranslator extends ExpressionTranslator {
     }
 
     translate() {
-        const value = getExpressionTranslator(this.tree.object).translate();
+        const value = getExpressionTranslator(this.tree.instance).translate();
         const index = getExpressionTranslator(this.tree.index).translate();
         return `${value}[${index}]`;
     }

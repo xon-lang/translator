@@ -8,7 +8,7 @@ export class MethodExpressionTranslator extends ExpressionTranslator {
     }
 
     translate() {
-        const object = getExpressionTranslator(this.tree.object).translate();
+        const object = getExpressionTranslator(this.tree.instance).translate();
         const args = this.tree.arguments
             .map((x) => x.value)
             .map(translateExpressionTree)

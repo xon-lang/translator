@@ -1,6 +1,6 @@
-import { translateProgram } from '../../translate';
+import { translateModule } from '../../translate';
 
 test('imports', () => {
-    const code = 'xon/math: DNN as Net \n';
-    expect(translateProgram(code)).toBe("import { DNN as Net } from 'xon/math';");
+    const code = 'xon.math: DNN as Net \n';
+    expect(translateModule(code)).toBe("import { DNN as Net } from 'xon/math';");
 });

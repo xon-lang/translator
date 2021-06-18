@@ -1,4 +1,4 @@
-import { ProgramTree } from '@xon/ast';
+import { ModuleTree } from '@xon/ast';
 import { NL, NL2 } from '../../util/string.util';
 import { BaseTranslator } from '../base.translator';
 import { DefinitionTranslator } from '../definition/definition.translator';
@@ -6,8 +6,8 @@ import { FunctionTranslator } from '../function/function.translator';
 import { LibraryTranslator } from '../library/library.translator';
 import { getStatementTranslator } from '../statement/statement-helper';
 
-export class ProgramTranslator extends BaseTranslator {
-    constructor(public tree: ProgramTree) {
+export class ModuleTranslator extends BaseTranslator {
+    constructor(public tree: ModuleTree) {
         super();
     }
 
