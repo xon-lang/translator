@@ -1,10 +1,11 @@
 import { DefinitionTree } from '@xon/ast';
-import { braceIndent, NL2 } from '../../util/string.util';
+import { braceIndent, NL, NL2 } from '../../util/string.util';
+import { getAllVariables } from '../../util/variables';
 import { BaseTranslator } from '../base.translator';
 import { getExpressionTranslator } from '../expression/expression-helper';
 import { translateParametersTrees } from '../parameter/parameter-helper';
 import { translateStatementsTrees } from '../statement/statement-helper';
-import { getTypeTranslator } from '../type/type-helper';
+import { getTypeTranslator, translateTypeTree } from '../type/type-helper';
 // import { FunctionTranslator } from '../function/function.translator';
 
 export class DefinitionTranslator extends BaseTranslator {
@@ -16,7 +17,7 @@ export class DefinitionTranslator extends BaseTranslator {
         let header = `export class ${this.tree.name}`;
 
         const constructorBody = this.tree.init
-            ? translateStatementsTrees(this.tree.init.body).join('\n')
+            ? translateStatementsTrees(this.tree.init.body).join(NL)
             : '';
         const constructor = this.tree.init ? `constructor()${braceIndent(constructorBody)}` : '';
 
@@ -43,7 +44,13 @@ export class DefinitionTranslator extends BaseTranslator {
                 : '';
             const parameters = translateParametersTrees(x.parameters).join(', ');
             const returnType = getTypeTranslator(x.returnType).translate();
-            const body = translateStatementsTrees(x.body).join('\n');
+            const vars = getAllVariables(x.body);
+            const body =
+                (vars.length
+                    ? 'var ' +
+                      vars.map((x) => `${x.name}: ${translateTypeTree(x.type)}`).join(', ') +
+                      NL
+                    : '') + translateStatementsTrees(x.body).join(NL);
 
             return `${modifier} ${x.name}${generics}(${parameters}): ${returnType}${braceIndent(
                 body

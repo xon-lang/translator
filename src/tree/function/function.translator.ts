@@ -1,10 +1,10 @@
 import { FunctionTree } from '@xon/ast';
-import { braceIndent } from '../../util/string.util';
+import { braceIndent, NL } from '../../util/string.util';
+import { getAllVariables } from '../../util/variables';
 import { BaseTranslator } from '../base.translator';
 import { translateParametersTrees } from '../parameter/parameter-helper';
 import { translateStatementsTrees } from '../statement/statement-helper';
-import { getTypeTranslator } from '../type/type-helper';
-// import { FunctionTranslator } from '../function/function.translator';
+import { getTypeTranslator, translateTypeTree } from '../type/type-helper';
 
 export class FunctionTranslator extends BaseTranslator {
     constructor(public tree: FunctionTree) {
@@ -18,7 +18,13 @@ export class FunctionTranslator extends BaseTranslator {
             : '';
         const parameters = translateParametersTrees(this.tree.parameters).join(', ');
         const returnType = getTypeTranslator(this.tree.returnType).translate();
-        const body = translateStatementsTrees(this.tree.body).join('\n');
+        const vars = getAllVariables(this.tree.body);
+        const body =
+            (vars.length
+                ? 'var ' +
+                  vars.map((x) => `${x.name}: ${translateTypeTree(x.type)}`).join(', ') +
+                  NL
+                : '') + translateStatementsTrees(this.tree.body).join(NL);
 
         return `${modifier}function ${
             this.tree.name
