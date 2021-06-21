@@ -25,7 +25,7 @@ export function getTypeTranslator(tree: TypeTree): TypeTranslator {
     if (tree instanceof PlainTypeTree) return new PlainTypeTranslator(tree);
     if (tree instanceof UnionTypeTree) return new UnionTypeTranslator(tree);
 
-    throw Error(`Type translator not found for "${this.constructor.name}"`);
+    throw Error(`Type translator not found for "${tree.constructor.name}"`);
 }
 
 export function translateTypeTree(tree: TypeTree): string {

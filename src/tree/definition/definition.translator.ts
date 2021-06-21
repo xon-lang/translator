@@ -26,7 +26,7 @@ export class DefinitionTranslator extends BaseTranslator {
             const type = getTypeTranslator(x.type).translate();
             const value = getExpressionTranslator(x.value)?.translate();
 
-            return `${modifier} ${x.name}: ${type}${value ? ' = ' + value : ''}`;
+            return `${modifier} ${x.name}: ${type}${value ? ' = ' + value : ''};`;
         });
 
         this.tree.parameters

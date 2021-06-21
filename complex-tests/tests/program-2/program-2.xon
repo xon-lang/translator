@@ -1,0 +1,11 @@
+ArgumentTree(_ctx ArgumentContext) is BaseTree:
+    name String
+    value ExpressionTree
+
+    init:
+        if not ctx: return
+        this.value = getExpressionTree(ctx.expression())
+        -- this.name = ctx.id().text
+
+    toString() String:
+        -- throw new Error(`toString not implemented for "${this.constructor.name}"`);

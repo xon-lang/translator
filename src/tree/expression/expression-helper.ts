@@ -55,7 +55,7 @@ export function getExpressionTranslator(tree: ExpressionTree): ExpressionTransla
     if (tree instanceof ParenthesizedExpressionTree)
         return new ParenthesizedExpressionTranslator(tree);
 
-    throw Error(`Expression translator not found for "${this.constructor.name}"`);
+    throw Error(`Expression translator not found for "${tree.constructor.name}"`);
 }
 
 export function translateExpressionTree(tree: ExpressionTree): string {
