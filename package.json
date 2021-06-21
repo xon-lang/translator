@@ -1,7 +1,7 @@
 {
     "name": "@xon/translator-ts",
     "author": "Nizami",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "XON to Typescript Translator",
     "main": "index.js",
     "types": "index.d.ts",
