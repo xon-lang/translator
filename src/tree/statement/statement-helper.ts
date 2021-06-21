@@ -1,4 +1,5 @@
 import {
+    AssertStatementTree,
     ExpressionStatementTree,
     ForStatementTree,
     IdAssignmentStatementTree,
@@ -9,7 +10,8 @@ import {
     StatementTree,
     WhileStatementTree,
 } from '@xon/ast';
-import { IdAssignmentStatementTranslator } from './assignment-statement/assignment-statement.translator';
+import { AssertStatementTranslator } from './assert/assert-statement.translator';
+import { IdAssignmentStatementTranslator } from './id-assignment-statement/id-assignment-statement.translator';
 import { ExpressionStatementTranslator } from './expression-statement/expression-statement.translator';
 import { ForStatementTranslator } from './for-statement/for-statement.translator';
 import { IfStatementTranslator } from './if-statement/if-statement.translator';
@@ -22,6 +24,7 @@ import { WhileStatementTranslator } from './while-statement/while-statement.tran
 export function getStatementTranslator(tree: StatementTree): StatementTranslator {
     if (tree === undefined) return undefined;
 
+    if (tree instanceof AssertStatementTree) return new AssertStatementTranslator(tree);
     if (tree instanceof IdAssignmentStatementTree) return new IdAssignmentStatementTranslator(tree);
     if (tree instanceof ExpressionStatementTree) return new ExpressionStatementTranslator(tree);
     if (tree instanceof ForStatementTree) return new ForStatementTranslator(tree);

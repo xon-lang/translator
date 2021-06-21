@@ -1,6 +1,8 @@
 SimpleClass:
     x Number
+
     y Number
+
     _prop Integer
 
     method(t Number, v Integer, vt String) null:
@@ -10,4 +12,4 @@ SimpleClass:
         this._coordinate(a, b)
 
     _coordinate(x Number, y Number) null:
-        2+2
+        2 + 2
